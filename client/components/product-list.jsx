@@ -9,6 +9,9 @@ export default class ProductList extends React.Component {
     };
     this.getProducts = this.getProducts.bind(this);
   }
+  componentDidMount() {
+    this.getProducts();
+  }
   getProducts() {
     fetch.get('/api/products.php')
       .then(response => {
