@@ -13,7 +13,7 @@ export default class ProductList extends React.Component {
     this.getProducts();
   }
   getProducts() {
-    fetch.get('/api/products.php')
+    fetch('/api/products.php')
       .then(response => {
         return response.json();
       })
