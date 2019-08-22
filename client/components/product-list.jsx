@@ -17,15 +17,20 @@ export default class ProductList extends React.Component {
       .then(response => {
         return response.json();
       })
-      .then(myJson => {
-        var products = JSON.stringify(myJson);
+      .then(products => {
         this.setState({ products });
       });
   }
   render() {
     return (
-      <div>
-        <ProductListItem />
+      <div className="d-flex flex-wrap">
+        {this.state.products.map((person, index) => {
+          return (
+            <ProductListItem className="containers" key={person.id} image={person.image} name={person.name} price={person.price} short={person.shortDescription} />
+          );
+        })
+
+        }
       </div>
     );
   }
