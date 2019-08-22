@@ -7,7 +7,27 @@ export default class ProductDetails extends React.Component {
       product: null
     };
   }
+  componentDidMount() {
+    fetch('/api/products.php?id=1')
+      .then(response => response.json())
+      .then(product => {
+        // console.log(product);
+        this.setState({ product });
+      });
+
+  }
   render() {
-    return null;
+    if (this.state.product === null) {
+      return <div>Loading...</div>;
+    }
+    return (
+      <div className="container">
+        <div>{this.state.product.name}</div>
+        <div>{this.state.product.price}</div>
+        <div>{this.state.product.image}</div>
+        <div>{this.state.product.shortDescription}</div>
+        <div>{this.state.product.longDescription}</div>
+      </div>
+    );
   }
 }

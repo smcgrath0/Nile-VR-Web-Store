@@ -5,7 +5,8 @@ export default class ProductList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      products: []
+      products: [],
+      isClicked: false
     };
     this.getProducts = this.getProducts.bind(this);
   }
@@ -26,7 +27,11 @@ export default class ProductList extends React.Component {
       <div className="d-inline-flex flex-wrap">
         {this.state.products.map((person, index) => {
           return (
-            <div key={index} className="col-md-4">
+            <div key={index} className="col-md-4" onClick={() => {
+              // console.log(person.id);
+              this.props.setView('details', { id: person.id });
+            }
+            }>
               <ProductListItem key={person.id} image={person.image} name={person.name} price={person.price} short={person.shortDescription} />
             </div>
           );
@@ -35,5 +40,6 @@ export default class ProductList extends React.Component {
         }
       </div>
     );
+
   }
 }
