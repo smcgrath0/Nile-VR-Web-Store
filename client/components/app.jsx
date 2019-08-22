@@ -16,8 +16,7 @@ export default class App extends React.Component {
   }
   setView(name, params) {
     var currentView = {};
-    currentView = { name };
-    currentView = { params };
+    currentView = { name, params };
     this.setState({ view: currentView });
   }
   render() {
@@ -29,9 +28,7 @@ export default class App extends React.Component {
         </>
       );
     } else if (this.state.view.name === 'details') {
-      return < ProductDetails />;
-    } else {
-      return < ProductDetails />;
+      return < ProductDetails view={this.state.view}/>;
     }
 
   }

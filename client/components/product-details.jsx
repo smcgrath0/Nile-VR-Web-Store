@@ -8,7 +8,8 @@ export default class ProductDetails extends React.Component {
     };
   }
   componentDidMount() {
-    fetch('/api/products.php?id=1')
+    // console.log(this.props.view.params.id);
+    fetch('/api/products.php?id=' + this.props.view.params.id)
       .then(response => response.json())
       .then(product => {
         // console.log(product);
