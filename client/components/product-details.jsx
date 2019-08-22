@@ -8,11 +8,9 @@ export default class ProductDetails extends React.Component {
     };
   }
   componentDidMount() {
-    // console.log(this.props.view.params.id);
     fetch('/api/products.php?id=' + this.props.view.params.id)
       .then(response => response.json())
       .then(product => {
-        // console.log(product);
         this.setState({ product });
       });
 
@@ -22,12 +20,15 @@ export default class ProductDetails extends React.Component {
       return <div>Loading...</div>;
     }
     return (
-      <div className="container">
+      <div className="container bg-dark mt-5 p-2 text-light">
+        <button className="btn bg-primary" onClick={ () => {
+          this.props.setView('catalog', { });
+        }}>Go back to Catalog</button>
         <div>{this.state.product.name}</div>
-        <div>{this.state.product.price}</div>
-        <div>{this.state.product.image}</div>
-        <div>{this.state.product.shortDescription}</div>
-        <div>{this.state.product.longDescription}</div>
+        <div>${this.state.product.price}</div>
+        <img className='mr-2' src={this.state.product.image} style={{ width: '300px', float: 'left' }}></img>
+        <div><strong>Short Description: </strong>{this.state.product.shortDescription}</div>
+        <div><strong>Long Description: </strong>{this.state.product.longDescription}</div>
       </div>
     );
   }

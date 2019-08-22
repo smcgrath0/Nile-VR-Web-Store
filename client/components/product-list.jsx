@@ -28,7 +28,6 @@ export default class ProductList extends React.Component {
         {this.state.products.map((person, index) => {
           return (
             <div key={index} className="col-md-4" onClick={() => {
-              // console.log(person.id);
               this.props.setView('details', { id: person.id });
             }
             }>
@@ -40,6 +39,5 @@ export default class ProductList extends React.Component {
         }
       </div>
     );
-
   }
 }
