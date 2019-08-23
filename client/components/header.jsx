@@ -2,12 +2,7 @@ import React from 'react';
 
 export default class Header extends React.Component {
   render() {
-    var cartItemCount;
-    if (!(this.props.cart)) {
-      cartItemCount = 0;
-    } else {
-      cartItemCount = this.props.cart.length;
-    }
+    var cartItemCount = this.props.cart.length;
     return (
       <div className="row justify-content-between">
         <div className="col-4">

@@ -27,7 +27,7 @@ export default class ProductList extends React.Component {
       <div className="d-inline-flex flex-wrap">
         {this.state.products.map((person, index) => {
           return (
-            <div key={index} className="col-md-4" onClick={() => {
+            <div key={index} className="col-md-4 round" onClick={() => {
               this.props.setView('details', { id: person.id });
             }}>
               <ProductListItem key={person.id} image={person.image} name={person.name} price={person.price / 100} short={person.shortDescription} />
