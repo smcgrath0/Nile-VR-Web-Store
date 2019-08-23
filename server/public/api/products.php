@@ -11,6 +11,9 @@ startUp();
 if(empty($_GET['id'])){
   $whereClause = '';
 } else {
+  if (!is_numeric($_GET['id'])){
+    throw new Exception("Error message: id needs to be a number");
+  }
   $whereClause = ' WHERE `id` = ' . $_GET['id'];
 }
 
@@ -28,6 +31,9 @@ if ($result = mysqli_query($conn, $query)) {
     $output[] = $row;
   }
   if (mysqli_num_rows($result) === 0) {
+    if (!empty($_GET['id'])){
+      throw new Exception('invalid ID: ' . $_GET['id']);
+    }
     print("no data availiable");
     exit();
   }
