@@ -60,7 +60,7 @@ export default class App extends React.Component {
       return (
         <>
           <Header cart={this.state.cart}/>
-          < ProductDetails view={this.state.view} setView={this.setView} addtocart={this.addToCart} />
+          <ProductDetails view={this.state.view} setView={this.setView} addtocart={this.addToCart} />
         </>
       );
     }
