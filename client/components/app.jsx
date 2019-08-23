@@ -20,6 +20,15 @@ export default class App extends React.Component {
     currentView = { name, params };
     this.setState({ view: currentView });
   }
+  getCartItems() {
+    fetch('/api/cart.php')
+      .then(response => {
+        return response.json();
+      })
+      .then(cart => {
+        this.setState({ cart });
+      });
+  }
   render() {
     if (this.state.view.name === 'catalog') {
       return (
