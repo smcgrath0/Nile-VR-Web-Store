@@ -5,7 +5,8 @@ export default class ProductList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      products: []
+      products: [],
+      isClicked: false
     };
     this.getProducts = this.getProducts.bind(this);
   }
@@ -30,7 +31,7 @@ export default class ProductList extends React.Component {
               this.props.setView('details', { id: person.id });
             }
             }>
-              <ProductListItem key={person.id} image={person.image} name={person.name} price={person.price} short={person.shortDescription} />
+              <ProductListItem key={person.id} image={person.image} name={person.name} price={person.price / 100} short={person.shortDescription} />
             </div>
           );
         })

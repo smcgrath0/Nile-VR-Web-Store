@@ -30,8 +30,9 @@ export default class ProductDetails extends React.Component {
           <img className='mr-2' src={this.state.product.image} style={{ width: '300px' }}></img>
           <div>
             <div>{this.state.product.name}</div>
-            <div>${this.state.product.price}</div>
+            <div>${this.state.product.price / 100}</div>
             <div><strong>Short Description: </strong>{this.state.product.shortDescription}</div>
+            <button className="btn btn-lg bg-light text-dark m-5 pr-5 pl-5">Add to Cart</button>
           </div>
         </div>
 
