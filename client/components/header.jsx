@@ -15,7 +15,7 @@ export default class Header extends React.Component {
         </div>
         <div className="bg-danger col-1 d-flex justify-content-center align-contents-center position-static" >
           <div className="fa fa-5x fa-shopping-cart" style={{ height: '100px' }}></div>
-          <div className="text-light position-absolute mt-2 ml-1" style={{ fontSize: '28px' }}>{cartItemCount}</div>
+          <div className="text-light position-absolute mt-3 ml-2" style={{ fontSize: '16px' }}>items: {cartItemCount}</div>
         </div>
       </div>
     );
