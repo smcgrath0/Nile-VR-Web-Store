@@ -29,8 +29,7 @@ export default class ProductList extends React.Component {
           return (
             <div key={index} className="col-md-4" onClick={() => {
               this.props.setView('details', { id: person.id });
-            }
-            }>
+            }}>
               <ProductListItem key={person.id} image={person.image} name={person.name} price={person.price / 100} short={person.shortDescription} />
             </div>
           );

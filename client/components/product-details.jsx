@@ -32,7 +32,7 @@ export default class ProductDetails extends React.Component {
             <div>{this.state.product.name}</div>
             <div>${this.state.product.price / 100}</div>
             <div><strong>Short Description: </strong>{this.state.product.shortDescription}</div>
-            <button className="btn btn-lg bg-light text-dark m-5 pr-5 pl-5">Add to Cart</button>
+            <button className="btn btn-lg bg-light text-dark m-5 pr-5 pl-5" onClick={() => this.props.addtocart(this.state.product)}>Add to Cart</button>
           </div>
         </div>
 
