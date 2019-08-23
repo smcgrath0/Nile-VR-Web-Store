@@ -8,7 +8,15 @@ require_once("db_connection.php");
 
 startUp();
 
-$query = "SELECT * FROM `products`";
+if(empty($_GET['id'])){
+  $whereClause = '';
+} else {
+  $whereClause = ' WHERE `id` = ' . $_GET['id'];
+}
+
+
+$query = "SELECT * FROM `products`" . $whereClause;
+
 
 $result = $conn->query($query);
 
