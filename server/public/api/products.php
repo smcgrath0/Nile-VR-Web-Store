@@ -8,30 +8,23 @@ require_once("db_connection.php");
 
 startUp();
 
-$whereClause = '';
+$query = "SELECT * FROM `products`";  
 
 if(!empty($_GET['id']) && !is_numeric($_GET['id'])){
   throw new Exception("Error message: id needs to be a number");
-} else {
-  $whereClause = ' WHERE `id` = ' . $_GET['id'];
+} else if (!empty($_GET['id'])){
+  $query = "SELECT * FROM `products` WHERE `id` = " . $_GET['id'];
 }
-
-$query = "SELECT * FROM `products`" . $whereClause;
-
-
-$result = $conn->query($query);
 
 if ($result = mysqli_query($conn, $query)) {
   $output = [];
 
-  while ($row = $result->fetch_assoc()) {
+  while ($row = mysqli_fetch_assoc($result)) {
     $output[] = $row;
   }
 
-  if (mysqli_num_rows($result) === 0) {
-    if (!empty($_GET['id'])){
-      throw new Exception('invalid ID: ' . $_GET['id']);
-    }
+  if (mysqli_num_rows($result) === 0 && !empty($_GET['id'])) {
+    throw new Exception('invalid ID: ' . $_GET['id']);
   }
   
   print(json_encode($output));
