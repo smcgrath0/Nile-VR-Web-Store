@@ -28,7 +28,7 @@ export default class CartSummary extends React.Component {
               <CartSummaryItem key={item.id} item={item} />
             );
           })}
-          <div className="bg-light text-dark mt-5">
+          <div className="bg-light text-dark mt-3">
             <h4>Cart Total: ${this.calculatetotal()}</h4>
           </div>
         </div>
@@ -36,5 +36,3 @@ export default class CartSummary extends React.Component {
     );
   }
 }
-
-// id={item.id} count={item.count} name={item.name} price={item.price} shortDes={item.shortDesription}

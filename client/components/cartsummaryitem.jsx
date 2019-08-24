@@ -2,7 +2,6 @@ import React from 'react';
 
 export default class CartSummaryItem extends React.Component {
   render() {
-    // console.log(this.props);
     return (
       <div className="bg-light mt-3 text-dark d-flex" style={{ height: '25%', width: '100%' }}>
         <img src={this.props.item.image} style={{ height: '150px', width: '150px' }}></img>
