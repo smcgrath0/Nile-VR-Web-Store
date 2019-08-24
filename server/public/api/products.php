@@ -10,10 +10,12 @@ startUp();
 
 $query = "SELECT * FROM `products`";  
 
+if (!empty($_GET['id'])){
+  $query .= " WHERE `id` = " . $_GET['id'];
+}
+
 if(!empty($_GET['id']) && !is_numeric($_GET['id'])){
   throw new Exception("Error message: id needs to be a number");
-} else if (!empty($_GET['id'])){
-  $query = "SELECT * FROM `products` WHERE `id` = " . $_GET['id'];
 }
 
 $result = mysqli_query($conn, $query);
