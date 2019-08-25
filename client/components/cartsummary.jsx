@@ -38,9 +38,13 @@ export default class CartSummary extends React.Component {
                 <CartSummaryItem key={item.id} item={item} />
               );
             })}
-          <div className="bg-light text-dark mt-3">
-            <h4>Cart Total: ${this.calculatetotal()}</h4>
+          <div className="d-flex justify-content-between">
+            <div className="text-light mt-3">
+              <h4>Cart Total: ${this.calculatetotal()}</h4>
+            </div>
+            <button className="mt-2 btn btn-lg bg-primary">Checkout</button>
           </div>
+
         </div>
       </>
     );
