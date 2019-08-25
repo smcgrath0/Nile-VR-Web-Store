@@ -36,4 +36,12 @@ if (mysqli_num_rows($result) === 0 && !empty($_GET['id'])) {
 
 print(json_encode($output));
 
+header('Content-Type: application/json');
+
+
+if (empty($_GET['id'])) {
+  readfile('dummy-products-list.json');
+} else {
+  readfile('dummy-product-details.json');
+}
 ?>
