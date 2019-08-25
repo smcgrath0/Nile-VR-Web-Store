@@ -8,13 +8,12 @@ export default class ProductDetails extends React.Component {
     };
   }
   componentDidMount() {
-
     fetch('/api/products.php?id=' + this.props.view.params.id)
       .then(response => response.json())
       .then(product => {
+        product.count = 1;
         this.setState({ product });
       });
-
   }
   render() {
     if (this.state.product === null) {
