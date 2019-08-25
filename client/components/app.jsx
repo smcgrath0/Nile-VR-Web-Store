@@ -60,12 +60,15 @@ export default class App extends React.Component {
       .then(item => {
         var cart = [];
         this.setState({ cart });
-        this.setView({ name: 'catalog', params: {} });
+        this.setView('catalog', {});
       });
   }
   calculateTotal() {
     var total = 0;
     for (var i = 0; i < this.state.cart.length; i++) {
+      if (this.state.cart === []) {
+        return total.toFixed(2);
+      }
       for (var j = 0; j < this.state.cart[i].count; j++) {
         total += parseFloat((this.state.cart[i].price / 100).toFixed(2));
       }

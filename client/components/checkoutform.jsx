@@ -65,9 +65,9 @@ export default class CheckoutForm extends React.Component {
         <div className="d-flex justify-content-between">
           <button className="btn bg-primary mb-2 ml-5" onClick={ () => {
             this.props.setView('catalog', { });
-          }}>Go back to Catalog</button>
+          }}>Continue Shopping</button>
           <button className="btn bg-info mb-2 ml-5" onClick={ () => {
-            this.props.setView('catalog', { });
+            this.props.placeorder({ name: this.state.name, creditcard: this.state.creditCard, address: this.state.address });
           }}>Comfirm Checkout</button>
           <div className="">
             <button onClick={this.cancelOrder} className="btn bg-danger">Cancel</button>
