@@ -42,36 +42,37 @@ export default class CheckoutForm extends React.Component {
   }
   render() {
     return (
-      <div className="container bg-warning" style={{ height: '500px' }}>
+      <div className="container checkoutpagesize">
 
-        <h1>Checkout</h1>
-        <h3>Order Total: ${this.props.total}</h3>
-        <div className="mx-auto" style={{ width: '300px' }}>
+        <h1 className="mx-auto checkoutpagesize">Checkout</h1>
+        <div className="d-flex justify-content-between">
+          <h3 className="mx-auto" style={{ width: '430px' }}>Order Total: ${this.props.total}</h3>
+
+          <button onClick={this.cancelOrder} className="btn bg-danger">Cancel</button>
+        </div>
+        <div className="mx-auto checkoutpagesize">
           <form className="form-group" onSubmit={this.handleSubmit}>
             <label>
               Name:
-              <input className="form-control" type="text" name="name" value={this.state.name} required autoFocus placeholder="name" onChange={this.handleChange}/>
+              <input className="form-control checkoutpagesize" type="text" name="name" value={this.state.name} required autoFocus placeholder="name" onChange={this.handleChange}/>
             </label>
             <label>
               Credit Card:
-              <input className="form-control" type="tel" creditcard="creditcard" value={this.state.creditCard} required autoFocus placeholder="credit card number" onChange={this.handleChange}/>
+              <input className="form-control checkoutpagesize" type="tel" creditcard="creditcard" value={this.state.creditCard} required autoFocus placeholder="credit card number" onChange={this.handleChange}/>
             </label>
             <label>
-              Home Address:
-              <textarea className="form-control" value={this.state.address} placeholder="address" required autoFocus onChange={this.handleChange}/>
+              Shipping Address:
+              <textarea className="form-control checkoutpagesize" value={this.state.address} placeholder="address" required autoFocus onChange={this.handleChange}/>
             </label>
           </form>
         </div>
         <div className="d-flex justify-content-between">
-          <button className="btn bg-primary mb-2 ml-5" onClick={ () => {
+          <button className="btn bg-primary mb-2" onClick={ () => {
             this.props.setView('catalog', { });
           }}>Continue Shopping</button>
           <button className="btn bg-info mb-2 ml-5" onClick={ () => {
             this.props.placeorder({ name: this.state.name, creditcard: this.state.creditCard, address: this.state.address });
-          }}>Comfirm Checkout</button>
-          <div className="">
-            <button onClick={this.cancelOrder} className="btn bg-danger">Cancel</button>
-          </div>
+          }}>Place Order</button>
         </div>
 
       </div>
