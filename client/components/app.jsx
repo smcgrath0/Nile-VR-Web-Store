@@ -13,13 +13,13 @@ export default class App extends React.Component {
         name: 'catalog',
         params: {}
       },
-      cart: [],
-      total: 0
+      cart: []
     };
     this.setView = this.setView.bind(this);
     this.addToCart = this.addToCart.bind(this);
     this.placeOrder = this.placeOrder.bind(this);
     this.calculateTotal = this.calculateTotal.bind(this);
+    this.calculateItemCount = this.calculateItemCount.bind(this);
   }
   setView(name, params) {
     var currentView = {};
@@ -78,33 +78,43 @@ export default class App extends React.Component {
   componentDidMount() {
     this.getCartItems();
   }
+  calculateItemCount() {
+    var totalitems = 0;
+    for (var i = 0; i < this.state.cart.length; i++) {
+      if (this.state.cart === []) {
+        return totalitems;
+      }
+      totalitems += this.state.cart[i].count;
+    }
+    return totalitems;
+  }
   render() {
 
     if (this.state.view.name === 'catalog') {
       return (
         <>
-          <Header cart={this.state.cart} setView={this.setView}/>
+          <Header cart={this.state.cart} setView={this.setView} totalitems={this.calculateItemCount()}/>
           <ProductList setView={this.setView}/>
         </>
       );
     } else if (this.state.view.name === 'details') {
       return (
         <>
-          <Header cart={this.state.cart} setView={this.setView}/>
+          <Header cart={this.state.cart} setView={this.setView} totalitems={this.calculateItemCount()}/>
           <ProductDetails view={this.state.view} setView={this.setView} addtocart={this.addToCart} />
         </>
       );
     } else if (this.state.view.name === 'cart') {
       return (
         <>
-          <Header cart={this.state.cart} setView={this.setView}/>
+          <Header cart={this.state.cart} setView={this.setView} totalitems={this.calculateItemCount()}/>
           <CartSummary view={this.state.view} setView={this.setView} cart={this.state.cart} total={this.calculateTotal()}/>
         </>
       );
     } else if (this.state.view.name === 'checkoutform') {
       return (
         <>
-          <Header cart={this.state.cart} setView={this.setView}/>
+          <Header cart={this.state.cart} setView={this.setView} totalitems={this.calculateItemCount()}/>
           <CheckoutForm view={this.state.view} setView={this.setView} placeorder={this.placeOrder} cart={this.state.cart} total={this.calculateTotal()}/>
         </>
       );

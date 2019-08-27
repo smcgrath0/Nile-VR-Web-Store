@@ -2,7 +2,6 @@ import React from 'react';
 
 export default class Header extends React.Component {
   render() {
-    var cartItemCount = this.props.cart.length;
     return (
       <div className="row justify-content-between">
         <div className="col-4">
@@ -12,7 +11,7 @@ export default class Header extends React.Component {
           <div className="fa fa-5x fa-shopping-cart mt-1" style={{ height: '100px' }} onClick={ () => {
             this.props.setView('cart', { });
           }}></div>
-          <div className="text-light position-absolute mt-4 ml-2" style={{ fontSize: '16px' }}>items: {cartItemCount}</div>
+          <div className="text-light position-absolute mt-4 ml-2" style={{ fontSize: '16px' }}>items: {this.props.totalitems}</div>
         </div>
       </div>
     );
