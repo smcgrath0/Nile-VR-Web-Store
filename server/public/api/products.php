@@ -4,10 +4,40 @@ require_once("functions.php");
 
 set_exception_handler('error_handler');
 
-// $output = file_get_contents('dummy-products-list.json');
+require_once("db_connection.php");
 
-// print($output);
+startUp();
+
+$query = "SELECT * FROM `products`";  
+
+if (!empty($_GET['id'])){
+  $query .= " WHERE `id` = " . $_GET['id'];
+}
+
+if(!empty($_GET['id']) && !is_numeric($_GET['id'])){
+  throw new Exception("Error message: id needs to be a number");
+}
+
+$result = mysqli_query($conn, $query);
+
+if(!$result){
+  throw new Exception("Error message: %s\n", mysqli_error($conn));
+}
+
+$output = [];
+
+while ($row = mysqli_fetch_assoc($result)) {
+  $output[] = $row;
+}
+
+if (mysqli_num_rows($result) === 0 && !empty($_GET['id'])) {
+  throw new Exception('invalid ID: ' . $_GET['id']);
+}
+
+print(json_encode($output));
+
 header('Content-Type: application/json');
+
 
 if (empty($_GET['id'])) {
   readfile('dummy-products-list.json');
