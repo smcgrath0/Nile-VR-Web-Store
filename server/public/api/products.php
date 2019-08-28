@@ -8,20 +8,21 @@ require_once("db_connection.php");
 
 startUp();
 
-$query = "SELECT * FROM `products`";  
-
+$whereClause = '';
 if (!empty($_GET['id'])){
-  $query .= " WHERE `id` = " . $_GET['id'];
+  $whereClause .= " WHERE `id` = " . $_GET['id'];
 }
 
 if(!empty($_GET['id']) && !is_numeric($_GET['id'])){
   throw new Exception("Error message: id needs to be a number");
 }
 
+$query = "SELECT `id`, `name`, GROUP_CONCAT(`image`), `price`,`shortDes`, `longDes` FROM `products` JOIN `images` ON `productID` = `id`" . $whereClause . " GROUP BY `productID`";
+
 $result = mysqli_query($conn, $query);
 
 if(!$result){
-  throw new Exception("Error message: %s\n", mysqli_error($conn));
+  throw new Exception("Error message: %s\n". mysqli_error($conn));
 }
 
 $output = [];
