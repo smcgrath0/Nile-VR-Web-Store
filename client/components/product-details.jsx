@@ -26,16 +26,16 @@ export default class ProductDetails extends React.Component {
         }}>Go back to Catalog</button>
 
         <div className="d-flex">
-          <img className='mr-2' src={this.state.product.image} style={{ width: '300px' }}></img>
+          <img className='mr-2' src={this.state.product[0].images} style={{ width: '300px' }}></img>
           <div>
-            <div>{this.state.product.name}</div>
-            <div>${this.state.product.price / 100}</div>
-            <div><strong>Short Description: </strong>{this.state.product.shortDescription}</div>
+            <div>{this.state.product[0].name}</div>
+            <div>${this.state.product[0].price / 100}</div>
+            <div><strong>Short Description: </strong>{this.state.product[0].shortdes}</div>
             <button className="btn btn-lg bg-light text-dark m-5 pr-5 pl-5" onClick={() => this.props.addtocart(this.state.product)}>Add to Cart</button>
           </div>
         </div>
 
-        <div><strong>Long Description: </strong>{this.state.product.longDescription}</div>
+        <div><strong>Long Description: </strong>{this.state.product[0].longdes}</div>
       </div>
     );
   }

@@ -1,4 +1,6 @@
 import React from 'react';
+// import styled, { keyframes } from 'styled-components';
+// import { merge, slideInDown, slideInLeft, slideOutUp, slideOutRight } from 'react-animations';
 import Header from './header';
 import ProductList from './product-list';
 import ProductDetails from './product-details';
@@ -105,10 +107,12 @@ export default class App extends React.Component {
         </>
       );
     } else if (this.state.view.name === 'cart') {
+      // const slideInAnimation = merge(slideInDown, slideInLeft);
+      // const slideInAnimation = styled.div`animation: 1s ${keyframes`${slideInDown}`}`;
       return (
         <>
           <Header cart={this.state.cart} setView={this.setView} totalitems={this.calculateItemCount()}/>
-          <CartSummary view={this.state.view} setView={this.setView} cart={this.state.cart} total={this.calculateTotal()}/>
+          <slideInAnimation> <CartSummary view={this.state.view} setView={this.setView} cart={this.state.cart} total={this.calculateTotal()}/> </slideInAnimation>
         </>
       );
     } else if (this.state.view.name === 'checkoutform') {
