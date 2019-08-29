@@ -94,10 +94,10 @@ export default class App extends React.Component {
 
     if (this.state.view.name === 'catalog') {
       return (
-        <>
+        <div style={{ width: '90vw' }}>
           <Header cart={this.state.cart} setView={this.setView} totalitems={this.calculateItemCount()}/>
           <ProductList setView={this.setView}/>
-        </>
+        </div>
       );
     } else if (this.state.view.name === 'details') {
       return (
