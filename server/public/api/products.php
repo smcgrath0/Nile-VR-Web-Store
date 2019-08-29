@@ -17,7 +17,7 @@ if(!empty($_GET['id']) && !is_numeric($_GET['id'])){
   throw new Exception("Error message: id needs to be a number");
 }
 
-$query = "SELECT `id`, `name`, GROUP_CONCAT(`image`), `price`,`shortDes`, `longDes` FROM `products` JOIN `images` ON `productID` = `id`" . $whereClause . " GROUP BY `productID`";
+$query = "SELECT `id`, `name`, GROUP_CONCAT(`image`) AS `images`, `price`,`shortDes`, `longDes` FROM `products` JOIN `images` ON `productID` = `id`" . $whereClause . " GROUP BY `productID`";
 
 $result = mysqli_query($conn, $query);
 
@@ -28,6 +28,8 @@ if(!$result){
 $output = [];
 
 while ($row = mysqli_fetch_assoc($result)) {
+  $id = $row['id'];
+  $row['images'] = explode(',', $row['images']);
   $output[] = $row;
 }
 

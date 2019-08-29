@@ -47,7 +47,7 @@ export default class App extends React.Component {
       })
       .then(item => {
         var cart = this.state.cart.slice();
-        cart.push(item);
+        cart.push(item[0]);
         this.setState({ cart });
       });
   }
@@ -112,7 +112,7 @@ export default class App extends React.Component {
       return (
         <>
           <Header cart={this.state.cart} setView={this.setView} totalitems={this.calculateItemCount()}/>
-          <slideInAnimation> <CartSummary view={this.state.view} setView={this.setView} cart={this.state.cart} total={this.calculateTotal()}/> </slideInAnimation>
+          <CartSummary view={this.state.view} setView={this.setView} cart={this.state.cart} total={this.calculateTotal()}/>
         </>
       );
     } else if (this.state.view.name === 'checkoutform') {
