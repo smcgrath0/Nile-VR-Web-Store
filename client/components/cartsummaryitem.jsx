@@ -19,8 +19,7 @@ export default class CartSummaryItem extends React.Component {
         <img src={this.checkImage()} className="rounded" style={{ height: '150px', width: '150px' }}></img>
         <div>
           <h2>{this.props.item.name}</h2>
-          <div className="text-secondary">${(this.props.item.price / 100).toFixed(2)}</div>
-          <div>x {this.props.item.count}</div>
+          <div className="text-secondary">${(this.props.item.price / 100).toFixed(2)} x {this.props.item.count}</div>
           <div>{this.props.item.shortDes}</div>
         </div>
         <div className="text-secondary ml-1" style={{ alignSelf: 'flex-end' }}>id # {this.props.item.id}</div>
