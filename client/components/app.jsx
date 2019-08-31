@@ -99,31 +99,30 @@ export default class App extends React.Component {
           <div className="pl-5"style={{ width: '90vw' }}>
             <ProductList setView={this.setView} />
           </div>
-
         </div>
       );
     } else if (this.state.view.name === 'details') {
       return (
-        <>
+        <div className="pb-5 mb-5" style={{ width: '98.9%' }}>
           <Header cart={this.state.cart} setView={this.setView} totalitems={this.calculateItemCount()}/>
           <ProductDetails view={this.state.view} setView={this.setView} addtocart={this.addToCart} />
-        </>
+        </div>
       );
     } else if (this.state.view.name === 'cart') {
       // const slideInAnimation = merge(slideInDown, slideInLeft);
       // const slideInAnimation = styled.div`animation: 1s ${keyframes`${slideInDown}`}`;
       return (
-        <>
+        <div className = "pb-5 mb-5" style = {{ width: '98.9%' }}>
           <Header cart={this.state.cart} setView={this.setView} totalitems={this.calculateItemCount()}/>
           <CartSummary view={this.state.view} setView={this.setView} cart={this.state.cart} total={this.calculateTotal()}/>
-        </>
+        </div>
       );
     } else if (this.state.view.name === 'checkoutform') {
       return (
-        <>
+        <div className="pb-5 mb-5" style={{ width: '98.9%' }}>
           <Header cart={this.state.cart} setView={this.setView} totalitems={this.calculateItemCount()}/>
           <CheckoutForm view={this.state.view} setView={this.setView} placeorder={this.placeOrder} cart={this.state.cart} total={this.calculateTotal()}/>
-        </>
+        </div>
       );
     }
   }

@@ -13,8 +13,8 @@ export default class Header extends React.Component {
         <div className="col-1 mr-4 d-flex justify-content-center align-contents-center position-static cartani" onClick={() => {
           this.props.setView('cart', {});
         }}>
-          <div className="fa fa-5x fa-shopping-cart mt-1" style={{ height: '100px' }}></div>
-          <div className="text-light position-absolute mt-4 ml-2" style={{ fontSize: '16px' }}>items: {this.props.totalitems}</div>
+          <div className="fa fa-5x fa-shopping-cart mt-2" style={{ height: '100px' }}></div>
+          <div className="text-light position-absolute mt-4 ml-2" style={{ fontSize: '20px' }}>{this.props.totalitems}</div>
         </div>
       </div>
     );

@@ -34,3 +34,11 @@
   cursor: pointer;
   color: white;
 }
+
+.carouseldirection:hover{
+  transition-duration: 1s;
+  transition-timing-function: ease;
+  cursor: pointer;
+  background: lightgrey;
+  opacity: 0.5;
+}

@@ -1,4 +1,5 @@
 import React from 'react';
+import DetailsCarousel from './details_carousel';
 
 export default class ProductDetails extends React.Component {
   constructor(props) {
@@ -26,7 +27,10 @@ export default class ProductDetails extends React.Component {
         }}>Go back to Catalog</button> */}
 
         <div className="d-flex">
-          <img className='mr-2' src={this.state.product[0].images[0]} style={{ width: '300px' }}></img>
+          <div className="mr-3 mb-2" style={{ width: '300px' }}>
+            <DetailsCarousel images={this.state.product[0].images}/>
+          </div>
+
           <div>
             <div>{this.state.product[0].name}</div>
             <div>${(this.state.product[0].price / 100).toFixed(2)}</div>
