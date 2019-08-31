@@ -42,7 +42,7 @@ export default class CheckoutForm extends React.Component {
   }
   render() {
     return (
-      <div className="container checkoutpagesize">
+      <div className="container checkoutpagesize mt-3">
 
         <h1 className="mx-auto checkoutpagesize">Checkout</h1>
         <div className="d-flex justify-content-between">
