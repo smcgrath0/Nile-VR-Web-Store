@@ -14,8 +14,7 @@ if (!$_SESSION['cartId']){
 };
 
 $cartID = $_SESSION['cartId'];
-//`c`.`cartID`, c.created,
-// cI.cartitemID, cI.productID,  cI.count, cI.price, cI.added, cI.updated, cI.cartID
+
 $query = "SELECT *
   FROM cartItems AS cI
   JOIN products AS p

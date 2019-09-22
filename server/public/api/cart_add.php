@@ -11,7 +11,7 @@ if (!defined('INTERNAL')) {
 
 $body = getBodyData();
 $body= json_decode($body);
-if ($body->productID < 1) {
+if (!$body->productID) {
   throw new Exception('no id');
 }
 
@@ -20,7 +20,6 @@ $id = $body->productID;
 if (empty($_SESSION['cartId'])){
   $cartID = false;
 } else {
-  // print('hi');
   $cartID = $_SESSION['cartId'];
 
 }
@@ -46,27 +45,9 @@ while ($row = mysqli_fetch_assoc($result)) {
   $output = $row;
 }
 
-
-// if (mysqli_num_rows($result) > 1) {
-//   throw new Exception('invalid ID: ' . $_GET['id']);
-// }
-
-
 $productData = $output;
 
 $startTransQuery = mysqli_query($conn, "START TRANSACTION");
-
-// $updateQuery = "UPDATE cartItems SET count=count+1 WHERE productID = " . $id;
-
-// if ($productData['productID']) {
-//   $result = mysqli_query($conn, $updateQuery);
-//   if (mysqli_affected_rows($conn) < 1) {
-//     mysqli_query($conn, "ROLLBACK");
-//     throw new Exception('invalid ID: ' . $_GET['id']);
-//   }
-//   $commitQuery = mysqli_query($conn, "COMMIT");
-//   exit();
-// }
 
 $cartQuery = "INSERT INTO cart SET created = NOW()";
 

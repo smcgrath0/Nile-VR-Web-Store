@@ -16,11 +16,8 @@ function getBodyData() {
   $result = file_get_contents('php://input');
 
   $result = json_decode($result);
-  // print('hi');
-  // if($result->cartID) {
-    // print('hi');
-    // $_SESSION['cartId'] = $result->cartID;
-  // }
+
+  $_SESSION['cartId'] = $result->cartID;
 
   return json_encode($result);
 }
