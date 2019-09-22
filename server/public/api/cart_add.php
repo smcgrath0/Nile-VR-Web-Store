@@ -54,7 +54,7 @@ $cartQuery = "INSERT INTO cart SET created = NOW()";
 if(!$cartID){
   $result = mysqli_query($conn, $cartQuery);
   if (mysqli_affected_rows($conn) != 1) {
-    throw new Exception('invalid ID: ' . $_GET['id']);
+    throw new Exception('invalid ID: ' . $id);
   }
   $cartID = mysqli_insert_id($conn);
   $_SESSION['cartId'] = $cartID;
@@ -67,7 +67,7 @@ $cartItemsQuery = "INSERT INTO cartItems
 $resultfinal = mysqli_query($conn, $cartItemsQuery);
 if (mysqli_affected_rows($conn) < 1) {
   mysqli_query($conn, "ROLLBACK");
-  throw new Exception('invalid ID: ' . $_GET['id']);
+  throw new Exception('invalid ID: ' . $id);
 }
 
 $commitQuery = mysqli_query($conn, "COMMIT");
