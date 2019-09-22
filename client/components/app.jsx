@@ -32,7 +32,7 @@ export default class App extends React.Component {
   getCartItems() {
     fetch('/api/cart.php')
       .then(response => {
-        return response.json();
+        return JSON.parse(response);
       })
       .then(cart => {
         this.setState({ cart });
@@ -44,7 +44,7 @@ export default class App extends React.Component {
       body: JSON.stringify(item)
     })
       .then(response => {
-        return response.json();
+        return response;
       })
       .then(item => {
         var cart = this.state.cart.slice();
