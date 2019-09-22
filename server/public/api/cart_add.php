@@ -10,7 +10,7 @@ if (!defined('INTERNAL')) {
 }
 
 $body = getBodyData();
-$body= json_decode($body);
+$body = json_decode($body);
 if (!$body->productID) {
   throw new Exception('no id');
 }
@@ -21,7 +21,6 @@ if (empty($_SESSION['cartId'])){
   $cartID = false;
 } else {
   $cartID = $_SESSION['cartId'];
-
 }
 
 $getCartItemsQuery = "SELECT *
@@ -71,4 +70,5 @@ if (mysqli_affected_rows($conn) < 1) {
 }
 
 $commitQuery = mysqli_query($conn, "COMMIT");
+print(json_encode($output));
 ?>

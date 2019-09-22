@@ -8,7 +8,7 @@ if (!defined('INTERNAL')) {
   exit();
 }
 
-if (!$_SESSION['cartId']){
+if (empty($_SESSION['cartId'])){
   print(json_encode([]));
   exit();
 };
@@ -37,5 +37,5 @@ if (mysqli_num_rows($result) < 1) {
 
 $productData = $output;
 
-print_r($productData);
+print(json_encode($productData));
 ?>

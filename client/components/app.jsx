@@ -1,6 +1,7 @@
 import React from 'react';
 // import styled, { keyframes } from 'styled-components';
 // import { merge, slideInDown, slideInLeft, slideOutUp, slideOutRight } from 'react-animations';
+import AppContext from '../context';
 import Header from './header';
 import ProductList from './product-list';
 import Footer from './footer';
@@ -30,25 +31,33 @@ export default class App extends React.Component {
     this.setState({ view: currentView });
   }
   getCartItems() {
-    fetch('/api/cart.php')
+    fetch('/api/cart.php', {
+      method: 'GET'
+    })
       .then(response => {
-        return JSON.parse(response);
+        return response.json();
       })
       .then(cart => {
         this.setState({ cart });
       });
   }
-  addToCart(item) {
+  addToCart(id) {
     fetch('/api/cart.php', {
       method: 'POST',
-      body: JSON.stringify(item)
+      body: JSON.stringify({ 'productID': parseInt(id) })
     })
       .then(response => {
-        return response;
+        return response.json();
       })
-      .then(item => {
-        var cart = this.state.cart.slice();
-        cart.push(item[0]);
+      .then(newitem => {
+        var cart = this.state.cart.map(item => {
+          if (item.productID === newitem.productID) {
+            item.count = parseInt(item.count) + 1;
+            return item;
+          } else {
+            return item;
+          }
+        });
         this.setState({ cart });
       });
   }
@@ -87,11 +96,14 @@ export default class App extends React.Component {
       if (this.state.cart === []) {
         return totalitems;
       }
-      totalitems += this.state.cart[i].count;
+      totalitems += parseInt(this.state.cart[i].count);
     }
     return totalitems;
   }
   render() {
+    const appContext = {
+      addToCart: this.addToCart
+    };
 
     if (this.state.view.name === 'catalog') {
       return (
@@ -115,11 +127,13 @@ export default class App extends React.Component {
       // const slideInAnimation = merge(slideInDown, slideInLeft);
       // const slideInAnimation = styled.div`animation: 1s ${keyframes`${slideInDown}`}`;
       return (
-        <div style = {{ width: '98.9%' }}>
-          <Header cart={this.state.cart} setView={this.setView} totalitems={this.calculateItemCount()}/>
-          <CartSummary view={this.state.view} setView={this.setView} cart={this.state.cart} total={this.calculateTotal()}/>
-          <Footer />
-        </div>
+        <AppContext.Provider value={appContext} >
+          <div style = {{ width: '98.9%' }}>
+            <Header cart={this.state.cart} setView={this.setView} totalitems={this.calculateItemCount()}/>
+            <CartSummary view={this.state.view} setView={this.setView} cart={this.state.cart} total={this.calculateTotal()}/>
+            <Footer />
+          </div>
+        </AppContext.Provider>
       );
     } else if (this.state.view.name === 'checkoutform') {
       return (
