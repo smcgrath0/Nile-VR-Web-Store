@@ -50,8 +50,10 @@ $startTransQuery = mysqli_query($conn, "START TRANSACTION");
 
 if($productData['count'] <= 1) {
   $cartItemsQuery = "DELETE FROM cartItems WHERE productID = " . $id . " AND cartID = ". $cartID;
+  $output['count'] = $output['count'] - 1;
 } else {
   $cartItemsQuery = "UPDATE cartItems SET count = count - 1 WHERE productID = " . $id . " AND cartID = " . $cartID;
+  $output['count'] = $output['count'] - 1;
 }
 
 $resultfinal = mysqli_query($conn, $cartItemsQuery);
@@ -61,7 +63,7 @@ if (mysqli_affected_rows($conn) < 1) {
 }
 
 $commitQuery = mysqli_query($conn, "COMMIT");
-print(json_encode($resultfinal));
+print(json_encode($output));
 
 
 

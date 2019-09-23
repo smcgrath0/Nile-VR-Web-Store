@@ -21,6 +21,7 @@ export default class App extends React.Component {
     };
     this.setView = this.setView.bind(this);
     this.addToCart = this.addToCart.bind(this);
+    this.deleteFromCart = this.deleteFromCart.bind(this);
     this.placeOrder = this.placeOrder.bind(this);
     this.calculateTotal = this.calculateTotal.bind(this);
     this.calculateItemCount = this.calculateItemCount.bind(this);
@@ -54,6 +55,32 @@ export default class App extends React.Component {
           if (item.productID === newitem.productID) {
             item.count = parseInt(item.count) + 1;
             return item;
+          } else {
+            return item;
+          }
+        });
+        this.setState({ cart });
+      });
+  }
+  deleteFromCart(id) {
+    fetch('/api/cart.php', {
+      method: 'DELETE',
+      body: JSON.stringify({ 'productID': parseInt(id) })
+    })
+      .then(response => {
+        return response.json();
+      })
+      .then(newitem => {
+        var cart = this.state.cart.filter(item => {
+          if (item.productID === newitem.productID && newitem.count > 0) {
+            return newitem;
+          } else {
+            return item;
+          }
+        });
+        cart = cart.map(item => {
+          if (item.productID === newitem.productID) {
+            return newitem;
           } else {
             return item;
           }
@@ -102,7 +129,8 @@ export default class App extends React.Component {
   }
   render() {
     const appContext = {
-      addToCart: this.addToCart
+      addToCart: this.addToCart,
+      deleteFromCart: this.deleteFromCart
     };
 
     if (this.state.view.name === 'catalog') {

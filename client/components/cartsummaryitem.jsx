@@ -23,11 +23,10 @@ export default class CartSummaryItem extends React.Component {
           <div className="d-flex">
             <div className="text-secondary">${(this.props.item.price / 100).toFixed(2)} x {this.props.item.count}</div>
             <div><i className="ml-2 fas fa-plus-square" onClick={() => {
-
               this.context.addToCart(this.props.item.id);
             }}></i></div>
             <div><i className="ml-2 fas fa-minus-square" onClick={() => {
-
+              this.context.deleteFromCart(this.props.item.id);
             }}></i></div>
           </div>
 
