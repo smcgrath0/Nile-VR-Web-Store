@@ -25,7 +25,7 @@ export default class CartSummary extends React.Component {
           {
             this.props.cart.map(item => {
               return (
-                <CartSummaryItem key={item.id} item={item} />
+                <CartSummaryItem key={item.id} item={item} addtocart={this.props.addToCart}/>
               );
             })}
           <div className="d-flex justify-content-between">

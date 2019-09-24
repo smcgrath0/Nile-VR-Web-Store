@@ -1,6 +1,7 @@
 import React from 'react';
 // import styled, { keyframes } from 'styled-components';
 // import { merge, slideInDown, slideInLeft, slideOutUp, slideOutRight } from 'react-animations';
+import AppContext from '../context';
 import Header from './header';
 import ProductList from './product-list';
 import Footer from './footer';
@@ -16,10 +17,12 @@ export default class App extends React.Component {
         name: 'catalog',
         params: {}
       },
-      cart: []
+      cart: [],
+      cartID: 0
     };
     this.setView = this.setView.bind(this);
     this.addToCart = this.addToCart.bind(this);
+    this.deleteFromCart = this.deleteFromCart.bind(this);
     this.placeOrder = this.placeOrder.bind(this);
     this.calculateTotal = this.calculateTotal.bind(this);
     this.calculateItemCount = this.calculateItemCount.bind(this);
@@ -30,25 +33,75 @@ export default class App extends React.Component {
     this.setState({ view: currentView });
   }
   getCartItems() {
-    fetch('/api/cart.php')
-      .then(response => {
-        return response.json();
-      })
-      .then(cart => {
-        this.setState({ cart });
-      });
-  }
-  addToCart(item) {
     fetch('/api/cart.php', {
-      method: 'POST',
-      body: JSON.stringify(item)
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      method: 'GET'
     })
       .then(response => {
         return response.json();
       })
-      .then(item => {
-        var cart = this.state.cart.slice();
-        cart.push(item[0]);
+      .then(cart => {
+        if (cart[0]) {
+          var cartID = cart[0].cartID;
+        }
+        this.setState({ cart, cartID });
+      });
+  }
+  addToCart(id) {
+    fetch('/api/cart.php', {
+      method: 'POST',
+      body: JSON.stringify({ 'productID': parseInt(id), cartID: this.state.cartID }),
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+    })
+      .then(response => {
+        return response.json();
+      })
+      .then(newitem => {
+        var counter = 0;
+        var cart = this.state.cart.map(item => {
+          if (item.productID === newitem.productID) {
+            counter++;
+            item.count = parseInt(item.count) + 1;
+            return item;
+          } else {
+            return item;
+          }
+        });
+        if (!counter) {
+          cart.push(newitem);
+        }
+        this.setState({ cart, cartID: newitem.cartID });
+      });
+  }
+  deleteFromCart(id) {
+    fetch('/api/cart.php', {
+      method: 'DELETE',
+      body: JSON.stringify({ 'productID': parseInt(id) })
+    })
+      .then(response => {
+        return response.json();
+      })
+      .then(newitem => {
+        var cart = this.state.cart.filter(item => {
+          if (item.productID === newitem.productID && newitem.count > 0) {
+            return newitem;
+          } else if (item.productID !== newitem.productID) {
+            return item;
+          }
+        });
+        cart = cart.map(item => {
+          if (item.productID === newitem.productID) {
+            return newitem;
+          } else {
+            return item;
+          }
+        });
         this.setState({ cart });
       });
   }
@@ -87,17 +140,21 @@ export default class App extends React.Component {
       if (this.state.cart === []) {
         return totalitems;
       }
-      totalitems += this.state.cart[i].count;
+      totalitems += parseInt(this.state.cart[i].count);
     }
     return totalitems;
   }
   render() {
+    const appContext = {
+      addToCart: this.addToCart,
+      deleteFromCart: this.deleteFromCart
+    };
 
     if (this.state.view.name === 'catalog') {
       return (
-        <div style={{ width: '98.9%' }}>
+        <div style={{ backgroundColor: '#CCCCCC' }}>
           <Header cart={this.state.cart} setView={this.setView} totalitems={this.calculateItemCount()}/>
-          <div className="pl-5"style={{ width: '90vw' }}>
+          <div style={{ width: '90vw', paddingLeft: '10vw' }}>
             <ProductList setView={this.setView} />
           </div>
           <Footer />
@@ -105,7 +162,7 @@ export default class App extends React.Component {
       );
     } else if (this.state.view.name === 'details') {
       return (
-        <div style={{ width: '98.9%' }}>
+        <div style={{ width: '98.9%' }} >
           <Header cart={this.state.cart} setView={this.setView} totalitems={this.calculateItemCount()}/>
           <ProductDetails view={this.state.view} setView={this.setView} addtocart={this.addToCart} />
           <Footer />
@@ -115,11 +172,13 @@ export default class App extends React.Component {
       // const slideInAnimation = merge(slideInDown, slideInLeft);
       // const slideInAnimation = styled.div`animation: 1s ${keyframes`${slideInDown}`}`;
       return (
-        <div style = {{ width: '98.9%' }}>
-          <Header cart={this.state.cart} setView={this.setView} totalitems={this.calculateItemCount()}/>
-          <CartSummary view={this.state.view} setView={this.setView} cart={this.state.cart} total={this.calculateTotal()}/>
-          <Footer />
-        </div>
+        <AppContext.Provider value={appContext} >
+          <div style = {{ width: '98.9%' }}>
+            <Header cart={this.state.cart} setView={this.setView} totalitems={this.calculateItemCount()}/>
+            <CartSummary view={this.state.view} setView={this.setView} cart={this.state.cart} total={this.calculateTotal()}/>
+            <Footer />
+          </div>
+        </AppContext.Provider>
       );
     } else if (this.state.view.name === 'checkoutform') {
       return (

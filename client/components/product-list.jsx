@@ -14,7 +14,10 @@ export default class ProductList extends React.Component {
     this.getProducts();
   }
   getProducts() {
-    fetch('/api/products.php')
+    const init = {
+      // body: JSON.stringify({ 'type': 'home' })
+    };
+    fetch('/api/products.php', init)
       .then(response => {
         return response.json();
       })
@@ -24,13 +27,13 @@ export default class ProductList extends React.Component {
   }
   render() {
     return (
-      <div className="d-inline-flex flex-wrap">
+      <div className="d-inline-flex flex-wrap justify-content-center" style={{ backgroundImage: 'url(https://background-tiles.com/overview/white/patterns/large/1018.png)' }}>
         {this.state.products.map((person, index) => {
           return (
-            <div key={index} className="col-md-4 col-sm-4 round" onClick={() => {
+            <div key={index} className="round" onClick={() => {
               this.props.setView('details', { id: person.id });
             }}>
-              <ProductListItem className="" key={person.id} image={person.images[0]} name={person.name} price={person.price} short={person.shortDes} />
+              <ProductListItem key={person.id} image={person.images[0]} name={person.name} price={person.price} short={person.shortDes} />
             </div>
           );
         })

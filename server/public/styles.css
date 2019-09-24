@@ -2,22 +2,41 @@
   width: 500px
 }
 
+.view{
+  transition-duration: 1s;
+  transform: scale(1)
+}
+
 .view:hover{
+  transition-duration: 1s;
   animation: fade 1s linear forwards;
-  animation-duration: 1s;
-  background-color:#000067;
-  color: white;
+  color:darkblue;
+  font-weight: bold;
   transform: scale(1.1);
   cursor: pointer;
 }
 
 @keyframes fade {
-  0% {opacity: .1}
-  0% { width: 60%}
+  0% {opacity: .5}
   20% {opacity: 0.7}
-  20% { width: 70%}
   100% {opacity: 1}
-  100% { width: 100%}
+}
+
+.home{
+  transition-duration: 1s;
+  transform: scale(1)
+}
+
+.home:hover{
+  transition-duration: 1s;
+  transform: scale(1.5);
+  cursor: pointer;
+}
+
+.cartani{
+  transition-duration: 1s;
+  transition-timing-function: ease;
+  transform: scale(1);
 }
 
 .cartani:hover{
