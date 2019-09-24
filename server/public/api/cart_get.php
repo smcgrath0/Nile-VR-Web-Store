@@ -8,8 +8,6 @@ if (!defined('INTERNAL')) {
   exit();
 }
 
-getBodyData();
-
 if (empty($_SESSION['cartId'])){
   print(json_encode([]));
   exit();

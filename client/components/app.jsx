@@ -152,9 +152,9 @@ export default class App extends React.Component {
 
     if (this.state.view.name === 'catalog') {
       return (
-        <div style={{ width: '98.9%' }}>
+        <div style={{ backgroundColor: '#CCCCCC' }}>
           <Header cart={this.state.cart} setView={this.setView} totalitems={this.calculateItemCount()}/>
-          <div className="pl-5"style={{ width: '90vw' }}>
+          <div style={{ width: '90vw', paddingLeft: '10vw' }}>
             <ProductList setView={this.setView} />
           </div>
           <Footer />
@@ -162,7 +162,7 @@ export default class App extends React.Component {
       );
     } else if (this.state.view.name === 'details') {
       return (
-        <div style={{ width: '98.9%' }}>
+        <div style={{ width: '98.9%' }} >
           <Header cart={this.state.cart} setView={this.setView} totalitems={this.calculateItemCount()}/>
           <ProductDetails view={this.state.view} setView={this.setView} addtocart={this.addToCart} />
           <Footer />
