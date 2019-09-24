@@ -5,7 +5,7 @@ export default class Header extends React.Component {
     return (
       <div className="d-flex justify-content-between mb-3" style={{ backgroundColor: '#e66000' }}>
         <div className="d-flex" style={{ alignItems: 'center', width: '70%' }}>
-          <div className="d-inline-flex " style={{ width: '200px' }} onClick={() => {
+          <div className="d-inline-flex home" style={{ width: '200px' }} onClick={() => {
             this.props.setView('catalog', {});
           }}>
             <div className="ml-5 mt-2" style={{ backgroundImage: 'url(https://www.eurotopics.net/cache/images/2/148482-medium_logo-teaser300.png?E1B87)', width: '50px', height: '50px', backgroundSize: '50px 50px' }}></div>

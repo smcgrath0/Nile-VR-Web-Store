@@ -2,10 +2,14 @@
   width: 500px
 }
 
+.view{
+  transition-duration: 1s;
+  transform: scale(1)
+}
+
 .view:hover{
   transition-duration: 1s;
   animation: fade 1s linear forwards;
-  /* background-image: url('./img/bluebg.png'); */
   color:darkblue;
   font-weight: bold;
   transform: scale(1.1);
@@ -16,6 +20,23 @@
   0% {opacity: .5}
   20% {opacity: 0.7}
   100% {opacity: 1}
+}
+
+.home{
+  transition-duration: 1s;
+  transform: scale(1)
+}
+
+.home:hover{
+  transition-duration: 1s;
+  transform: scale(1.5);
+  cursor: pointer;
+}
+
+.cartani{
+  transition-duration: 1s;
+  transition-timing-function: ease;
+  transform: scale(1);
 }
 
 .cartani:hover{
