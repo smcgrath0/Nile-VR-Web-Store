@@ -59,16 +59,34 @@ if(!$cartID){
   $_SESSION['cartId'] = $cartID;
 }
 
+$productData['productID'] = $id;
+$productData['cartID'] = $cartID;
+
 $cartItemsQuery = "INSERT INTO cartItems
                                (productID, count, added, cartID)
                         VALUES (". $id .", 1, NOW(), ".$cartID. ") ON DUPLICATE KEY UPDATE count = count + 1";
 
 $resultfinal = mysqli_query($conn, $cartItemsQuery);
+
+$count = 1;
+if (!$productData['count']){
+  $productData['count'] = $count;
+};
+$countQuery = "SELECT count FROM cartItems WHERE productID = " . $id . " AND cartID = " . $cartID;
+
+$resultCount = mysqli_query($conn, $countQuery);
+
+while ($row = mysqli_fetch_assoc($resultCount)) {
+  $count = $row['count'];
+}
+
+$productData['count'] = $count;
+
 if (mysqli_affected_rows($conn) < 1) {
   mysqli_query($conn, "ROLLBACK");
   throw new Exception('invalid ID: ' . $id);
 }
 
 $commitQuery = mysqli_query($conn, "COMMIT");
-print(json_encode($output));
+print(json_encode($productData));
 ?>

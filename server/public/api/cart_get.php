@@ -8,10 +8,13 @@ if (!defined('INTERNAL')) {
   exit();
 }
 
+getBodyData();
+
 if (empty($_SESSION['cartId'])){
   print(json_encode([]));
   exit();
 };
+
 
 $cartID = $_SESSION['cartId'];
 
@@ -31,9 +34,9 @@ while ($row = mysqli_fetch_assoc($result)) {
   $output[] = $row;
 }
 
-if (mysqli_num_rows($result) < 1) {
-  throw new Exception('no items in cart');
-}
+// if (mysqli_num_rows($result) < 1) {
+//   throw new Exception('no items in cart');
+// }
 
 $productData = $output;
 

@@ -17,19 +17,15 @@ if (!$body->productID) {
 
 $id = $body->productID;
 
-if (empty($_SESSION['cartId'])){
-  $cartID = false;
-} else {
-  $cartID = $_SESSION['cartId'];
-}
+$cartID = $_SESSION['cartId'];
 
 $getCartItemsQuery = "SELECT *
 FROM cartItems AS cI
 JOIN cart AS c
     ON c.cartID = cI.cartID
-RIGHT JOIN products AS p
+JOIN products AS p
     ON p.id = cI.productID
-WHERE p.id = {$id}";
+WHERE p.id = {$id} AND cI.cartID = {$cartID}";
 
 $result = mysqli_query($conn, $getCartItemsQuery);
 
@@ -40,7 +36,6 @@ if (!$result) {
 $output;
 
 while ($row = mysqli_fetch_assoc($result)) {
-  $id = $row['id'];
   $output = $row;
 }
 

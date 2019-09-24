@@ -17,7 +17,8 @@ export default class App extends React.Component {
         name: 'catalog',
         params: {}
       },
-      cart: []
+      cart: [],
+      cartID: 0
     };
     this.setView = this.setView.bind(this);
     this.addToCart = this.addToCart.bind(this);
@@ -33,33 +34,49 @@ export default class App extends React.Component {
   }
   getCartItems() {
     fetch('/api/cart.php', {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
       method: 'GET'
     })
       .then(response => {
         return response.json();
       })
       .then(cart => {
-        this.setState({ cart });
+        if (cart[0]) {
+          var cartID = cart[0].cartID;
+        }
+        this.setState({ cart, cartID });
       });
   }
   addToCart(id) {
     fetch('/api/cart.php', {
       method: 'POST',
-      body: JSON.stringify({ 'productID': parseInt(id) })
+      body: JSON.stringify({ 'productID': parseInt(id), cartID: this.state.cartID }),
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
     })
       .then(response => {
         return response.json();
       })
       .then(newitem => {
+        var counter = 0;
         var cart = this.state.cart.map(item => {
           if (item.productID === newitem.productID) {
+            counter++;
             item.count = parseInt(item.count) + 1;
             return item;
           } else {
             return item;
           }
         });
-        this.setState({ cart });
+        if (!counter) {
+          cart.push(newitem);
+        }
+        this.setState({ cart, cartID: newitem.cartID });
       });
   }
   deleteFromCart(id) {
@@ -74,7 +91,7 @@ export default class App extends React.Component {
         var cart = this.state.cart.filter(item => {
           if (item.productID === newitem.productID && newitem.count > 0) {
             return newitem;
-          } else {
+          } else if (item.productID !== newitem.productID) {
             return item;
           }
         });
