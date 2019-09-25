@@ -188,6 +188,36 @@ export default class App extends React.Component {
           <Footer />
         </div>
       );
+    } else if (this.state.view.name === 'systems') {
+      return (
+        <div>
+          <Header cart={this.state.cart} setView={this.setView} totalitems={this.calculateItemCount()} />
+          <div style={{ width: '90vw', paddingLeft: '10vw' }}>
+            <ProductList setView={this.setView} />
+          </div>
+          <Footer />
+        </div>
+      );
+    } else if (this.state.view.name === 'accessories') {
+      return (
+        <div>
+          <Header cart={this.state.cart} setView={this.setView} totalitems={this.calculateItemCount()} />
+          <div style={{ width: '90vw', paddingLeft: '10vw' }}>
+            <ProductList setView={this.setView} />
+          </div>
+          <Footer />
+        </div>
+      );
+    } else if (this.state.view.name === 'games') {
+      return (
+        <div>
+          <Header cart={this.state.cart} setView={this.setView} totalitems={this.calculateItemCount()} />
+          <div style={{ width: '90vw', paddingLeft: '10vw' }}>
+            <ProductList setView={this.setView} />
+          </div>
+          <Footer />
+        </div>
+      );
     }
   }
 }
