@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "webpack-dev-server",
     "build": "webpack --mode=production",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "db-dump": "mysqldump --user=root --password=root --host=localhost wickedsales > database/$(date +%s)_dump.sql",
+    "db-import": "mysql --user=root --password=root wickedsales <"
   },
   "husky": {
     "hooks": {
