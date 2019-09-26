@@ -1,10 +1,10 @@
-# Nile-VR-Web-Store
-Great place to order your favorite VR consoles and games! 
-A full stack LAMP & React shopping cart app.
+# Nile - The VR Web Store
+ - Great place to order your favorite VR consoles and games! 
+ - A full stack LAMP & React shopping cart app that is a single-page  React application and a dynamic PHP API, that uses cookies to keep track of the user with sessions.
+ - Used React, PHP, CSS
 
-## Introduction
-
-For this project, you will be building a single-page React application and a dynamic PHP API.
+# Live 
+nile.shanemcgrath.live
 
 ## NPM Scripts
 
