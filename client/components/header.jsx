@@ -11,10 +11,16 @@ export default class Header extends React.Component {
             <div className="ml-5 mt-2" style={{ backgroundImage: 'url(https://www.eurotopics.net/cache/images/2/148482-medium_logo-teaser300.png?E1B87)', width: '50px', height: '50px', backgroundSize: '50px 50px' }}></div>
             <h1 className="mt-3" style={{ fontFamily: 'Impact, Charcoal, sans-serif' }}>ile</h1>
           </div>
-          <div className="d-flex justify-content-between mt-5 ml-1">
-            <h3 style={{ marginRight: '10px' }} className="titleani">Systems</h3>
-            <h3 style={{ marginRight: '10px' }} className="titleani">Accessories</h3>
-            <h3 className="titleani">Games</h3>
+          <div className="d-flex justify-content-between mt-5 ml-1" >
+            <h3 style={{ marginRight: '10px' }} className="titleani" onClick={() => {
+              this.props.setView('systems', {});
+            }}>Systems</h3>
+            <h3 style={{ marginRight: '10px' }} className="titleani" onClick={() => {
+              this.props.setView('accessories', {});
+            }}>Accessories</h3>
+            <h3 className="titleani" onClick={() => {
+              this.props.setView('games', {});
+            }}>Games</h3>
           </div>
         </div>
         <div className="col-1 mr-4 d-flex justify-content-center align-contents-center position-static cartani" onClick={() => {
