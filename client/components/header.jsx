@@ -13,13 +13,13 @@ export default class Header extends React.Component {
           </div>
           <div className="d-flex justify-content-between mt-5 ml-1" >
             <h3 style={{ marginRight: '10px' }} className="titleani" onClick={() => {
-              this.props.setView('systems', {});
+              this.props.setView('systems', { type: 'systems' });
             }}>Systems</h3>
             <h3 style={{ marginRight: '10px' }} className="titleani" onClick={() => {
-              this.props.setView('accessories', {});
+              this.props.setView('accessories', { type: 'accessories' });
             }}>Accessories</h3>
             <h3 className="titleani" onClick={() => {
-              this.props.setView('games', {});
+              this.props.setView('games', { type: 'games' });
             }}>Games</h3>
           </div>
         </div>

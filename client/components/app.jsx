@@ -18,7 +18,8 @@ export default class App extends React.Component {
         params: {}
       },
       cart: [],
-      cartID: 0
+      cartID: 0,
+      type: ''
     };
     this.setView = this.setView.bind(this);
     this.addToCart = this.addToCart.bind(this);
@@ -151,11 +152,12 @@ export default class App extends React.Component {
     };
 
     if (this.state.view.name === 'catalog') {
+      // this.state.view.params.type === 'catalog';
       return (
         <div style={{ backgroundColor: '#CCCCCC' }}>
           <Header cart={this.state.cart} setView={this.setView} totalitems={this.calculateItemCount()}/>
           <div style={{ width: '90vw', paddingLeft: '10vw' }}>
-            <ProductList setView={this.setView} />
+            <ProductList view={{ params: { type: 'catalog' } }} type={this.state.view.name} setView={this.setView} />
           </div>
           <Footer />
         </div>
@@ -193,7 +195,7 @@ export default class App extends React.Component {
         <div>
           <Header cart={this.state.cart} setView={this.setView} totalitems={this.calculateItemCount()} />
           <div style={{ width: '90vw', paddingLeft: '10vw' }}>
-            <ProductList setView={this.setView} />
+            <ProductList view={this.state.view} type={this.state.view.name} setView={this.setView} />
           </div>
           <Footer />
         </div>
@@ -203,7 +205,7 @@ export default class App extends React.Component {
         <div>
           <Header cart={this.state.cart} setView={this.setView} totalitems={this.calculateItemCount()} />
           <div style={{ width: '90vw', paddingLeft: '10vw' }}>
-            <ProductList setView={this.setView} />
+            <ProductList view={this.state.view} type={this.state.view.name} setView={this.setView} />
           </div>
           <Footer />
         </div>
@@ -213,7 +215,7 @@ export default class App extends React.Component {
         <div>
           <Header cart={this.state.cart} setView={this.setView} totalitems={this.calculateItemCount()} />
           <div style={{ width: '90vw', paddingLeft: '10vw' }}>
-            <ProductList setView={this.setView} />
+            <ProductList view={this.state.view} type={this.state.view.name} setView={this.setView} />
           </div>
           <Footer />
         </div>
