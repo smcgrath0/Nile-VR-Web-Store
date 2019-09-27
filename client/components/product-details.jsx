@@ -22,10 +22,6 @@ export default class ProductDetails extends React.Component {
     }
     return (
       <div className="container mt-5 p-2 ">
-        {/* <button className="btn bg-primary mb-2" onClick={ () => {
-          this.props.setView('catalog', { });
-        }}>Go back to Catalog</button> */}
-
         <div className="d-flex">
           <div className="mr-3 mb-2" style={{ width: '300px' }}>
             <DetailsCarousel images={this.state.product[0].images}/>

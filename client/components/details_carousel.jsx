@@ -20,8 +20,6 @@ class DetailsCarousel extends Component {
     this.onExited = this.onExited.bind(this);
   }
   addToList() {
-    // altText: 'Slide 1',
-    // caption: 'Slide 1'
     for (var i = 0; i < this.props.images.length; i++) {
       this.items.push({ src: this.props.images[i] });
     }

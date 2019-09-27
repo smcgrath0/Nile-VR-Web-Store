@@ -1,6 +1,4 @@
 import React from 'react';
-// import styled, { keyframes } from 'styled-components';
-// import { merge, slideInDown, slideInLeft, slideOutUp, slideOutRight } from 'react-animations';
 import AppContext from '../context';
 import Header from './header';
 import ProductList from './product-list';
@@ -152,7 +150,6 @@ export default class App extends React.Component {
     };
 
     if (this.state.view.name === 'catalog') {
-      // this.state.view.params.type === 'catalog';
       return (
         <div style={{ backgroundColor: '#CCCCCC' }}>
           <Header cart={this.state.cart} setView={this.setView} totalitems={this.calculateItemCount()}/>
@@ -171,8 +168,6 @@ export default class App extends React.Component {
         </div>
       );
     } else if (this.state.view.name === 'cart') {
-      // const slideInAnimation = merge(slideInDown, slideInLeft);
-      // const slideInAnimation = styled.div`animation: 1s ${keyframes`${slideInDown}`}`;
       return (
         <AppContext.Provider value={appContext} >
           <div style = {{ width: '98.9%' }}>

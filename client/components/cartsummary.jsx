@@ -16,9 +16,6 @@ export default class CartSummary extends React.Component {
   render() {
     return (
       <>
-        {/* <button className="btn bg-primary mb-2 ml-5" onClick={ () => {
-          this.props.setView('catalog', { });
-        }}>Go back to Catalog</button> */}
         <div className="container bg-dark text-light mt-5 rounded" style={{ width: '100vh' }}>
           <h1>My Cart</h1>
           {this.testNoItems()}
