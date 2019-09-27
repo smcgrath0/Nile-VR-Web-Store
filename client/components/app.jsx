@@ -6,6 +6,7 @@ import Footer from './footer';
 import ProductDetails from './product-details';
 import CartSummary from './cartsummary.jsx';
 import CheckoutForm from './checkoutform.jsx';
+import PostCheckout from './postcheckout';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -115,7 +116,7 @@ export default class App extends React.Component {
       .then(item => {
         var cart = [];
         this.setState({ cart });
-        this.setView('catalog', {});
+        this.setView('postcheckout', { item });
       });
   }
   calculateTotal() {
@@ -153,6 +154,7 @@ export default class App extends React.Component {
       return (
         <div style={{ backgroundColor: '#CCCCCC' }}>
           <Header cart={this.state.cart} setView={this.setView} totalitems={this.calculateItemCount()}/>
+          <img style={{ width: '100%', marginBottom: '10px' }} src={'../img/landingpagebg1.png'}></img>
           <div style={{ width: '90vw', paddingLeft: '10vw' }}>
             <ProductList view={{ params: { type: 'catalog' } }} type={this.state.view.name} setView={this.setView} />
           </div>
@@ -172,8 +174,11 @@ export default class App extends React.Component {
         <AppContext.Provider value={appContext} >
           <div style = {{ width: '98.9%' }}>
             <Header cart={this.state.cart} setView={this.setView} totalitems={this.calculateItemCount()}/>
-            <CartSummary view={this.state.view} setView={this.setView} cart={this.state.cart} total={this.calculateTotal()}/>
-            <Footer />
+
+            <CartSummary view={this.state.view} setView={this.setView} cart={this.state.cart} total={this.calculateTotal()} />
+            <div style={{ marginTop: '100px' }}>
+              <Footer />
+            </div>
           </div>
         </AppContext.Provider>
       );
@@ -189,6 +194,7 @@ export default class App extends React.Component {
       return (
         <div>
           <Header cart={this.state.cart} setView={this.setView} totalitems={this.calculateItemCount()} />
+          <img style={{ width: '100%', marginBottom: '10px' }} src={'../img/systemsbg3.png'}></img>
           <div style={{ width: '90vw', paddingLeft: '10vw' }}>
             <ProductList view={this.state.view} type={this.state.view.name} setView={this.setView} />
           </div>
@@ -199,6 +205,7 @@ export default class App extends React.Component {
       return (
         <div>
           <Header cart={this.state.cart} setView={this.setView} totalitems={this.calculateItemCount()} />
+          <img style={{ width: '100%', marginBottom: '10px' }} src={'../img/accessoriesbg2.jpg'}></img>
           <div style={{ width: '90vw', paddingLeft: '10vw' }}>
             <ProductList view={this.state.view} type={this.state.view.name} setView={this.setView} />
           </div>
@@ -209,8 +216,19 @@ export default class App extends React.Component {
       return (
         <div>
           <Header cart={this.state.cart} setView={this.setView} totalitems={this.calculateItemCount()} />
+          <img style={{ width: '100%', marginBottom: '10px' }} src={'../img/gamesbg2.png'}></img>
           <div style={{ width: '90vw', paddingLeft: '10vw' }}>
             <ProductList view={this.state.view} type={this.state.view.name} setView={this.setView} />
+          </div>
+          <Footer />
+        </div>
+      );
+    } else if (this.state.view.name === 'postcheckout') {
+      return (
+        <div>
+          <Header cart={this.state.cart} setView={this.setView} totalitems={this.calculateItemCount()} />
+          <div style={{ height: '80vh' }}>
+            <PostCheckout view={this.state.view} setView={this.setView} />
           </div>
           <Footer />
         </div>

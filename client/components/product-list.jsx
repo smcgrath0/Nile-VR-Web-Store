@@ -37,7 +37,7 @@ export default class ProductList extends React.Component {
   }
   render() {
     return (
-      <div className="d-inline-flex flex-wrap justify-content-center" style={{ backgroundImage: 'url(https://background-tiles.com/overview/white/patterns/large/1018.png)' }}>
+      <div className="d-inline-flex flex-wrap justify-content-center pb-2" style={{ backgroundImage: 'url(https://background-tiles.com/overview/white/patterns/large/1018.png)' }}>
         {this.state.products.map((person, index) => {
           if (this.images.length < this.state.products.length) {
             this.images.push(person.images[0]);

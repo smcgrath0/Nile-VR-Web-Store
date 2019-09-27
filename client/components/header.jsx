@@ -3,7 +3,7 @@ import React from 'react';
 export default class Header extends React.Component {
   render() {
     return (
-      <div className="d-flex justify-content-between mb-3" style={{ backgroundColor: '#e66000' }}>
+      <div className="d-flex justify-content-between" style={{ backgroundColor: '#e66000' }}>
         <div className="d-flex" style={{ alignItems: 'center', width: '70%' }}>
           <div className="d-inline-flex home" style={{ width: '200px' }} onClick={() => {
             this.props.setView('catalog', {});

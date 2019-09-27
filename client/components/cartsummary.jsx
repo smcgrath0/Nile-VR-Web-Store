@@ -30,7 +30,9 @@ export default class CartSummary extends React.Component {
               <h4>Cart Total: ${this.props.total}</h4>
             </div>
             <button className="mt-2 btn btn-lg bg-primary mb-2" onClick={ () => {
-              this.props.setView('checkoutform', { });
+              if (this.props.cart.length !== 0) {
+                this.props.setView('checkoutform', {});
+              }
             }}>Checkout</button>
           </div>
 
