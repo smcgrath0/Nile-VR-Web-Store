@@ -18,7 +18,8 @@ export default class App extends React.Component {
         params: {}
       },
       cart: [],
-      cartID: 0
+      cartID: 0,
+      type: ''
     };
     this.setView = this.setView.bind(this);
     this.addToCart = this.addToCart.bind(this);
@@ -155,7 +156,7 @@ export default class App extends React.Component {
         <div style={{ backgroundColor: '#CCCCCC' }}>
           <Header cart={this.state.cart} setView={this.setView} totalitems={this.calculateItemCount()}/>
           <div style={{ width: '90vw', paddingLeft: '10vw' }}>
-            <ProductList setView={this.setView} />
+            <ProductList view={{ params: { type: 'catalog' } }} type={this.state.view.name} setView={this.setView} />
           </div>
           <Footer />
         </div>
@@ -185,6 +186,36 @@ export default class App extends React.Component {
         <div style={{ width: '98.9%' }}>
           <Header cart={this.state.cart} setView={this.setView} totalitems={this.calculateItemCount()}/>
           <CheckoutForm view={this.state.view} setView={this.setView} placeorder={this.placeOrder} cart={this.state.cart} total={this.calculateTotal()}/>
+          <Footer />
+        </div>
+      );
+    } else if (this.state.view.name === 'systems') {
+      return (
+        <div>
+          <Header cart={this.state.cart} setView={this.setView} totalitems={this.calculateItemCount()} />
+          <div style={{ width: '90vw', paddingLeft: '10vw' }}>
+            <ProductList view={this.state.view} type={this.state.view.name} setView={this.setView} />
+          </div>
+          <Footer />
+        </div>
+      );
+    } else if (this.state.view.name === 'accessories') {
+      return (
+        <div>
+          <Header cart={this.state.cart} setView={this.setView} totalitems={this.calculateItemCount()} />
+          <div style={{ width: '90vw', paddingLeft: '10vw' }}>
+            <ProductList view={this.state.view} type={this.state.view.name} setView={this.setView} />
+          </div>
+          <Footer />
+        </div>
+      );
+    } else if (this.state.view.name === 'games') {
+      return (
+        <div>
+          <Header cart={this.state.cart} setView={this.setView} totalitems={this.calculateItemCount()} />
+          <div style={{ width: '90vw', paddingLeft: '10vw' }}>
+            <ProductList view={this.state.view} type={this.state.view.name} setView={this.setView} />
+          </div>
           <Footer />
         </div>
       );
