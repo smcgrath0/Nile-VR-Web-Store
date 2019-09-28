@@ -163,7 +163,7 @@ export default class App extends React.Component {
       );
     } else if (this.state.view.name === 'details') {
       return (
-        <div style={{ width: '98.9%' }} >
+        <div>
           <Header cart={this.state.cart} setView={this.setView} totalitems={this.calculateItemCount()}/>
           <ProductDetails view={this.state.view} setView={this.setView} addtocart={this.addToCart} />
           <Footer />
@@ -172,7 +172,7 @@ export default class App extends React.Component {
     } else if (this.state.view.name === 'cart') {
       return (
         <AppContext.Provider value={appContext} >
-          <div style = {{ width: '98.9%' }}>
+          <div>
             <Header cart={this.state.cart} setView={this.setView} totalitems={this.calculateItemCount()}/>
 
             <CartSummary view={this.state.view} setView={this.setView} cart={this.state.cart} total={this.calculateTotal()} />
@@ -184,7 +184,7 @@ export default class App extends React.Component {
       );
     } else if (this.state.view.name === 'checkoutform') {
       return (
-        <div style={{ width: '98.9%' }}>
+        <div>
           <Header cart={this.state.cart} setView={this.setView} totalitems={this.calculateItemCount()}/>
           <CheckoutForm view={this.state.view} setView={this.setView} placeorder={this.placeOrder} cart={this.state.cart} total={this.calculateTotal()}/>
           <Footer />

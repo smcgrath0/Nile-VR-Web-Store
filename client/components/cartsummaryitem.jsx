@@ -17,7 +17,7 @@ export default class CartSummaryItem extends React.Component {
   render() {
     return (
       <div className="bg-light mt-3 text-dark d-flex rounded" style={{ height: '25%', width: '100%' }}>
-        <img src={this.checkImage()} className="rounded" style={{ height: '150px', width: '150px' }}></img>
+        <img src={this.checkImage()} className="rounded my-auto" style={{ height: '150px', width: '150px' }}></img>
         <div>
           <h2>{this.props.item.name}</h2>
           <div className="d-flex">
