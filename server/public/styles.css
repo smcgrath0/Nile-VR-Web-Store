@@ -61,3 +61,16 @@
   background: lightgrey;
   opacity: 0.5;
 }
+
+.addAndDeleteItem{
+  transition-duration: 1s;
+  transition-timing-function: ease;
+  transform: scale(1);
+}
+
+.addAndDeleteItem:hover{
+  transition-duration: 1s;
+  transition-timing-function: ease;
+  transform: scale(1.2);
+  cursor: pointer;
+}

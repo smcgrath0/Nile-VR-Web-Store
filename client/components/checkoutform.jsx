@@ -1,4 +1,5 @@
 import React from 'react';
+import AppContext from '../context.js';
 
 export default class CheckoutForm extends React.Component {
   constructor(props) {
@@ -71,6 +72,7 @@ export default class CheckoutForm extends React.Component {
             this.props.setView('catalog', { });
           }}>Continue Shopping</button>
           <button className="btn bg-info mb-2 ml-5" onClick={ () => {
+            this.context.deleteFromCart();
             this.props.placeorder({ name: this.state.name, creditcard: this.state.creditCard, address: this.state.address });
           }}>Place Order</button>
         </div>
@@ -79,3 +81,5 @@ export default class CheckoutForm extends React.Component {
     );
   }
 }
+
+CheckoutForm.contextType = AppContext;

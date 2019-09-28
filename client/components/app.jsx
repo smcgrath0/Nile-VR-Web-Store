@@ -80,6 +80,9 @@ export default class App extends React.Component {
       });
   }
   deleteFromCart(id) {
+    if (!id) {
+      id = 0;
+    }
     fetch('/api/cart.php', {
       method: 'DELETE',
       body: JSON.stringify({ 'productID': parseInt(id) })
@@ -88,6 +91,9 @@ export default class App extends React.Component {
         return response.json();
       })
       .then(newitem => {
+        if (newitem === 'true') {
+          this.setState({ cart: [] });
+        }
         var cart = this.state.cart.filter(item => {
           if (item.productID === newitem.productID && newitem.count > 0) {
             return newitem;
@@ -148,6 +154,7 @@ export default class App extends React.Component {
     const appContext = {
       addToCart: this.addToCart,
       deleteFromCart: this.deleteFromCart
+
     };
 
     if (this.state.view.name === 'catalog') {
@@ -184,11 +191,13 @@ export default class App extends React.Component {
       );
     } else if (this.state.view.name === 'checkoutform') {
       return (
-        <div>
-          <Header cart={this.state.cart} setView={this.setView} totalitems={this.calculateItemCount()}/>
-          <CheckoutForm view={this.state.view} setView={this.setView} placeorder={this.placeOrder} cart={this.state.cart} total={this.calculateTotal()}/>
-          <Footer />
-        </div>
+        <AppContext.Provider value={appContext} >
+          <div>
+            <Header cart={this.state.cart} setView={this.setView} totalitems={this.calculateItemCount()} />
+            <CheckoutForm view={this.state.view} setView={this.setView} placeorder={this.placeOrder} cart={this.state.cart} total={this.calculateTotal()} />
+            <Footer />
+          </div>
+        </AppContext.Provider>
       );
     } else if (this.state.view.name === 'systems') {
       return (
