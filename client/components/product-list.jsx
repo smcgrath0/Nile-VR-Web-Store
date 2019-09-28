@@ -20,8 +20,8 @@ export default class ProductList extends React.Component {
   }
   getProducts(nextProps) {
     var type = '';
-    if (this.props.type === 'catalog') {
-      type = 'catalog';
+    if (this.props.type) {
+      type = this.props.type;
     }
     if (nextProps) {
       type = nextProps.view.params.type;

@@ -21,7 +21,7 @@ export default class ProductDetails extends React.Component {
       return <div>Loading...</div>;
     }
     return (
-      <div className="container mt-5 p-2 ">
+      <div className="container mt-5 p-2 rounded" style={{ backgroundColor: '#FFFFFF' }}>
         <div className="d-flex">
           <div className="mr-3 mb-2" style={{ width: '300px' }}>
             <DetailsCarousel images={this.state.product[0].images}/>

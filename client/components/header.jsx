@@ -8,10 +8,10 @@ export default class Header extends React.Component {
           <div className="d-inline-flex home" style={{ width: '200px' }} onClick={() => {
             this.props.setView('catalog', {});
           }}>
-            <div className="ml-5 mt-2" style={{ backgroundImage: 'url(https://www.eurotopics.net/cache/images/2/148482-medium_logo-teaser300.png?E1B87)', width: '50px', height: '50px', backgroundSize: '50px 50px' }}></div>
+            <div className="ml-5 mt-2" style={{ backgroundImage: 'url(../img/logo.png)', width: '50px', height: '50px', backgroundSize: '50px 50px' }}></div>
             <h1 className="mt-3" style={{ fontFamily: 'Impact, Charcoal, sans-serif' }}>ile</h1>
           </div>
-          <div className="d-flex justify-content-between mt-5 ml-1" >
+          <div className="d-flex justify-content-between mt-5" >
             <h3 style={{ marginRight: '10px' }} className="titleani" onClick={() => {
               this.props.setView('systems', { type: 'systems' });
             }}>Systems</h3>

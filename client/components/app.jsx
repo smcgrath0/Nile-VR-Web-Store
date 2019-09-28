@@ -170,7 +170,7 @@ export default class App extends React.Component {
       );
     } else if (this.state.view.name === 'details') {
       return (
-        <div>
+        <div style={{ backgroundColor: '#CCCCCC' }}>
           <Header cart={this.state.cart} setView={this.setView} totalitems={this.calculateItemCount()}/>
           <ProductDetails view={this.state.view} setView={this.setView} addtocart={this.addToCart} />
           <Footer />
@@ -179,7 +179,7 @@ export default class App extends React.Component {
     } else if (this.state.view.name === 'cart') {
       return (
         <AppContext.Provider value={appContext} >
-          <div>
+          <div style={{ backgroundColor: '#CCCCCC' }}>
             <Header cart={this.state.cart} setView={this.setView} totalitems={this.calculateItemCount()}/>
 
             <CartSummary view={this.state.view} setView={this.setView} cart={this.state.cart} total={this.calculateTotal()} />
@@ -192,7 +192,7 @@ export default class App extends React.Component {
     } else if (this.state.view.name === 'checkoutform') {
       return (
         <AppContext.Provider value={appContext} >
-          <div>
+          <div style={{ backgroundColor: '#CCCCCC' }}>
             <Header cart={this.state.cart} setView={this.setView} totalitems={this.calculateItemCount()} />
             <CheckoutForm view={this.state.view} setView={this.setView} placeorder={this.placeOrder} cart={this.state.cart} total={this.calculateTotal()} />
             <Footer />
@@ -201,7 +201,8 @@ export default class App extends React.Component {
       );
     } else if (this.state.view.name === 'systems') {
       return (
-        <div>
+        // style={{ backgroundColor: 'rgba(0,56,130,1)' }}
+        <div style={{ backgroundColor: '#CCCCCC' }}>
           <Header cart={this.state.cart} setView={this.setView} totalitems={this.calculateItemCount()} />
           <img style={{ width: '100%', marginBottom: '10px' }} src={'../img/systemsbg3.png'}></img>
           <div style={{ width: '90vw', paddingLeft: '10vw' }}>
@@ -212,7 +213,7 @@ export default class App extends React.Component {
       );
     } else if (this.state.view.name === 'accessories') {
       return (
-        <div>
+        <div style={{ backgroundColor: '#CCCCCC' }}>
           <Header cart={this.state.cart} setView={this.setView} totalitems={this.calculateItemCount()} />
           <img style={{ width: '100%', marginBottom: '10px' }} src={'../img/accessoriesbg2.jpg'}></img>
           <div style={{ width: '90vw', paddingLeft: '10vw' }}>
@@ -223,9 +224,9 @@ export default class App extends React.Component {
       );
     } else if (this.state.view.name === 'games') {
       return (
-        <div>
+        <div style={{ backgroundColor: '#CCCCCC' }}>
           <Header cart={this.state.cart} setView={this.setView} totalitems={this.calculateItemCount()} />
-          <img style={{ width: '100%', marginBottom: '10px' }} src={'../img/gamesbg2.png'}></img>
+          <img style={{ width: '100%', marginBottom: '10px' }} src={'../img/gamesbg4.jpg'}></img>
           <div style={{ width: '90vw', paddingLeft: '10vw' }}>
             <ProductList view={this.state.view} type={this.state.view.name} setView={this.setView} />
           </div>

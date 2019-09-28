@@ -12,7 +12,7 @@
   animation: fade 1s linear forwards;
   color:darkblue;
   font-weight: bold;
-  transform: scale(1.1);
+  transform: scale(1.05);
   cursor: pointer;
 }
 
@@ -29,7 +29,7 @@
 
 .home:hover{
   transition-duration: 1s;
-  transform: scale(1.5);
+  transform: scale(1.1);
   cursor: pointer;
 }
 
@@ -46,12 +46,21 @@
   color: #000067;
   cursor: pointer;
 }
-
+.titleani{
+  margin-bottom: 10%;
+}
 .titleani:hover{
   transition-duration: 1s;
   transition-timing-function: ease;
   cursor: pointer;
   color: white;
+}
+
+@media only screen and (max-width: 600px) {
+  .titleani {
+    font-size: 1rem;
+    margin-bottom: 30px;
+  }
 }
 
 .carouseldirection:hover{
