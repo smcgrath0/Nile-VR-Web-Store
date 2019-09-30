@@ -4,7 +4,7 @@
  - Used React, PHP, CSS
 
 # Live 
-nile.shanemcgrath.live
+[I'm an inline-style link](http://nile.shanemcgrath.live)
 ![GIF of Live](/server/public/img/portfoliovidNile.gif)
 
 ## NPM Scripts
