@@ -5,7 +5,7 @@
 
 # Live 
 nile.shanemcgrath.live
-![GIF of Live](/server/public/images/portfoliovidNile.gif)
+![GIF of Live](/server/public/img/portfoliovidNile.gif)
 
 ## NPM Scripts
 
