@@ -5,6 +5,7 @@
 
 # Live 
 nile.shanemcgrath.live
+![GIF of Live](C:\Users\smcgr\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\LICEcap\portfoliovidNile)
 
 ## NPM Scripts
 
