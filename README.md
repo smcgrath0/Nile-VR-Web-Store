@@ -6,6 +6,9 @@
 # Live 
 nile.shanemcgrath.live
 
+
+![GIF of Live](/server/public/img/portfoliovidNile.gif)
+
 ## NPM Scripts
 
 - `dev` - Start Webpack Dev Server at `localhost:3000`
