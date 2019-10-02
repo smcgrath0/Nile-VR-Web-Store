@@ -7,6 +7,9 @@
   transform: scale(1)
 }
 
+/* .placeorderbutton{
+  background-color: black;
+} */
 .view:hover{
   transition-duration: 1s;
   animation: fade 1s linear forwards;
@@ -82,4 +85,47 @@
   transition-timing-function: ease;
   transform: scale(1.2);
   cursor: pointer;
+}
+
+/*details modal*/
+.detailsScreen{
+  height: 150%;
+  width: 120%;
+  color:brown;
+  position: absolute;
+  top:-10%;
+  left: -20%;
+  padding: 10px 0px 0px 10px;
+  z-index: 50;
+  background-color: rgba(100,100,100,0.7);
+  display:none;
+}
+
+.detailsPopUp{
+  background-color: rgba(255, 166, 65, 1);
+  top: 30%;
+  left: 33.33%;
+  position: fixed;
+  padding-bottom: 2%;
+  width: 33.33%;
+  text-align:center;
+  border-radius: 5px;
+}
+
+#xButton{
+  color: red;
+  float: right;
+  border: 0;
+  background-color: rgba(100,100,100,0);
+  margin: 2%;
+  transition-duration: .5s;
+  transform: scale(1);
+}
+
+#xButton:hover{
+  transition-duration: .5s;
+  transform: scale(1.1);
+}
+.detailsPopUpText{
+  margin-top: 10%;
 }

@@ -5,7 +5,8 @@ export default class ProductDetails extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      product: null
+      product: null,
+      modal: 'none'
     };
   }
   componentDidMount() {
@@ -31,11 +32,21 @@ export default class ProductDetails extends React.Component {
             <div>{this.state.product[0].name}</div>
             <div>${(this.state.product[0].price / 100).toFixed(2)}</div>
             <div><strong>Short Description: </strong>{this.state.product[0].shortDes}</div>
-            <button className="btn btn-lg bg-dark text-light m-5 pr-5 pl-5" onClick={() => this.props.addtocart(this.props.view.params.id)}>Add to Cart</button>
+            <button className="btn btn-lg bg-dark text-light m-5 pr-5 pl-5" onClick={() => {
+
+              this.props.addtocart(this.props.view.params.id);
+              this.setState({ modal: 'flex' });
+            }}>Add to Cart</button>
           </div>
         </div>
 
         <div><strong>Long Description: </strong>{this.state.product[0].longDes}</div>
+        <div className="detailsScreen" style={{ display: this.state.modal }}>
+          <div className="detailsPopUp">
+            <button id="xButton" onClick={() => { this.setState({ modal: 'none' }); }}><i className="fa fa-window-close" aria-hidden="true"></i></button>
+            <h2 className="detailsPopUpText">You added {this.state.product[0].name} to your cart</h2>
+          </div>
+        </div>
       </div>
     );
   }
