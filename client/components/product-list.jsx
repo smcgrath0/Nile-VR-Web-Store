@@ -6,34 +6,47 @@ export default class ProductList extends React.Component {
     super(props);
     this.state = {
       products: [],
-      isClicked: false
+      isClicked: false,
+      images: []
     };
+    this.images = [];
     this.getProducts = this.getProducts.bind(this);
+  }
+  componentWillReceiveProps(nextProps) {
+    this.getProducts(nextProps);
   }
   componentDidMount() {
     this.getProducts();
   }
-  getProducts() {
-    const init = {
-      // body: JSON.stringify({ 'type': 'home' })
-    };
-    fetch('/api/products.php', init)
+  getProducts(nextProps) {
+    var type = '';
+    if (this.props.type) {
+      type = this.props.type;
+    }
+    if (nextProps) {
+      type = nextProps.view.params.type;
+    }
+    fetch('/api/products.php?type=' + type)
       .then(response => {
         return response.json();
       })
       .then(products => {
+        this.images = [];
         this.setState({ products });
       });
   }
   render() {
     return (
-      <div className="d-inline-flex flex-wrap justify-content-center" style={{ backgroundImage: 'url(https://background-tiles.com/overview/white/patterns/large/1018.png)' }}>
+      <div className="d-inline-flex flex-wrap justify-content-center pb-2" style={{ backgroundImage: 'url(https://background-tiles.com/overview/white/patterns/large/1018.png)' }}>
         {this.state.products.map((person, index) => {
+          if (this.images.length < this.state.products.length) {
+            this.images.push(person.images[0]);
+          }
           return (
             <div key={index} className="round" onClick={() => {
               this.props.setView('details', { id: person.id });
             }}>
-              <ProductListItem key={person.id} image={person.images[0]} name={person.name} price={person.price} short={person.shortDes} />
+              <ProductListItem key={person.id} image={this.images[index]} name={person.name} price={person.price} short={person.shortDes} />
             </div>
           );
         })

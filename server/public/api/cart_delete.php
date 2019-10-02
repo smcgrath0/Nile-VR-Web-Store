@@ -11,12 +11,17 @@ if (!defined('INTERNAL')) {
 
 $body = getBodyData();
 $body = json_decode($body);
-if (!$body->productID) {
+if ($body->productID < 0) {
   throw new Exception('no id');
 }
 
 $id = $body->productID;
 
+$andClause = '';
+
+if($id !== 0) {
+  $andClause = " AND p.id = {$id}";
+}
 $cartID = $_SESSION['cartId'];
 
 $getCartItemsQuery = "SELECT *
@@ -25,7 +30,7 @@ JOIN cart AS c
     ON c.cartID = cI.cartID
 JOIN products AS p
     ON p.id = cI.productID
-WHERE p.id = {$id} AND cI.cartID = {$cartID}";
+WHERE cI.cartID = {$cartID}" . $andClause;
 
 $result = mysqli_query($conn, $getCartItemsQuery);
 
@@ -34,9 +39,20 @@ if (!$result) {
 }
 
 $output;
-
+$newoutput = [];
 while ($row = mysqli_fetch_assoc($result)) {
-  $output = $row;
+  if ($id !== 0){
+    $output = $row;
+  } else {
+    $newoutput[] = $row;
+  }
+}
+
+if (!empty($newoutput)) {
+  $checkoutQuery = "DELETE FROM cartItems WHERE cartID = {$cartID}";
+  $result = mysqli_query($conn, $checkoutQuery);
+  print('true');
+  exit();
 }
 
 $productData = $output;
