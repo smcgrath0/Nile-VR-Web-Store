@@ -96,7 +96,7 @@ export default class CheckoutForm extends React.Component {
         <div className="d-flex justify-content-between">
           <h3 className="mx-auto" style={{ width: '430px' }}>Order Total: ${this.props.total}</h3>
 
-          <button onClick={this.cancelOrder} className="btn bg-danger">Cancel</button>
+          <button onClick={this.cancelOrder} className="btn bg-danger cancelButton">Cancel</button>
         </div>
         <div className="mx-auto checkoutpagesize">
           <form className="form-group" onSubmit={this.handleSubmit}>
@@ -114,20 +114,23 @@ export default class CheckoutForm extends React.Component {
             </label>
           </form>
         </div>
-        <div className="d-flex justify-content-between">
+        <div className="checkoutButtons justify-content-between checkoutpagesize">
           <button className="btn bg-primary mb-2" onClick={ () => {
             this.props.setView('catalog', { });
           }}>Continue Shopping</button>
           <div>
             <p style={{ color: 'red', fontSize: '1rem', textAlign: 'center', marginLeft: '5%', width: '140px' }}>{this.state.errorMessage}</p>
           </div>
-          <button className="btn placeorderbutton text-white bg-dark mb-2 ml-5" onClick={ event => {
-            this.handleSubmit(event);
-            if (this.addressCheck && this.creditCardCheck && this.nameCheck) {
-              this.context.deleteFromCart();
-              this.props.placeorder({ name: this.state.name, creditcard: this.state.creditCard, address: this.state.address });
-            }
-          }}>Place Order</button>
+          <div className="placeorderbuttonContainer">
+            <button className="btn placeorderbutton text-white bg-dark" onClick={event => {
+              this.handleSubmit(event);
+              if (this.addressCheck && this.creditCardCheck && this.nameCheck) {
+                this.context.deleteFromCart();
+                this.props.placeorder({ name: this.state.name, creditcard: this.state.creditCard, address: this.state.address });
+              }
+            }}>Place Order</button>
+          </div>
+
         </div>
 
       </div>

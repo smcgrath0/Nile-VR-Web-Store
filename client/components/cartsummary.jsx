@@ -16,7 +16,7 @@ export default class CartSummary extends React.Component {
   render() {
     return (
       <>
-        <div className="container bg-dark text-light mt-5 rounded" style={{ width: '100vh' }}>
+        <div className="container bg-dark text-light mt-5 rounded">
           <h1>My Cart</h1>
           {this.testNoItems()}
           {

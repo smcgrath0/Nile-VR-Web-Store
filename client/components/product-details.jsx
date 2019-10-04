@@ -23,20 +23,24 @@ export default class ProductDetails extends React.Component {
     }
     return (
       <div className="container mt-5 p-2 rounded" style={{ backgroundColor: '#FFFFFF' }}>
-        <div className="d-flex">
-          <div className="mr-3 mb-2" style={{ width: '300px' }}>
+        <div className="productDetails">
+          <div className="mb-2 detailsCarousel">
             <DetailsCarousel images={this.state.product[0].images}/>
           </div>
 
-          <div>
+          <div className="productInfo">
             <div>{this.state.product[0].name}</div>
-            <div>${(this.state.product[0].price / 100).toFixed(2)}</div>
-            <div><strong>Short Description: </strong>{this.state.product[0].shortDes}</div>
-            <button className="btn btn-lg bg-dark text-light m-5 pr-5 pl-5" onClick={() => {
+            <div className="detailsPrice">${(this.state.product[0].price / 100).toFixed(2)}</div>
+            <div><strong>Short Description: </strong>
+              <p>{this.state.product[0].shortDes}</p>
+            </div>
+            <div className="addToCartButtonContainer">
+              <button className="btn btn-lg bg-dark text-light pr-5 pl-5 addToCartButton" onClick={() => {
 
-              this.props.addtocart(this.props.view.params.id);
-              this.setState({ modal: 'flex' });
-            }}>Add to Cart</button>
+                this.props.addtocart(this.props.view.params.id);
+                this.setState({ modal: 'flex' });
+              }}>Add to Cart</button>
+            </div>
           </div>
         </div>
 

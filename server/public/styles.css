@@ -10,6 +10,37 @@
 /* .placeorderbutton{
   background-color: black;
 } */
+
+.detailsCarousel{
+  width: 300px;
+  margin-right: 5%;
+}
+.productDetails{
+  display: flex;
+}
+.addToCartButton{
+  margin: 5%;
+}
+@media screen and (max-width: 800px) {
+  .productInfo {
+    width: 100%;
+  }
+  .detailsCarousel{
+    margin:auto;
+  }
+  .detailsPrice{
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  .addToCartButtonContainer {
+    display:flex;
+    justify-content: left;
+  }
+  .productDetails{
+    display:block;
+  }
+}
+
 .view:hover{
   transition-duration: 1s;
   animation: fade 1s linear forwards;
@@ -36,6 +67,15 @@
   cursor: pointer;
 }
 
+.homeIcon{
+  margin-left:5%;
+  margin-top:2%;
+  width: 50px;
+}
+
+.homeText {
+  margin-top:5%;
+}
 .cartani{
   transition-duration: 1s;
   transition-timing-function: ease;
@@ -58,11 +98,69 @@
   cursor: pointer;
   color: white;
 }
+.checkoutButtons{
+  display:flex;
+}
+.placeorderbutton{
+    margin-left: 5%;
+    margin-bottom: 3%;
+  }
+.postCheckoutContainer {
+  width: 80%;
+}
+.cartImage{
+  height: 150px;
+  width: 150px;
+  background-size:contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.cartImageContainer{
+  display: flex;
+  align-items: center;
+}
+
+.carouselImages > li{
+  background-color: black;
+  border-radius: 46%;
+}
 
 @media only screen and (max-width: 600px) {
   .titleani {
     font-size: 1rem;
-    margin-bottom: 30px;
+    margin-bottom: -40px;
+  }
+  .homeIcon {
+    width:50px;
+  }
+  .cartani{
+    margin-right: 2%;
+  }
+  .cartDes{
+    font-size:0;
+  }
+  .cartName{
+    font-size: 1.25rem
+  }
+  .cartPrice{
+    font-size: 1.25rem;
+  }
+  .checkoutpagesize{
+    width: 300px;
+  }
+  .checkoutButtons{
+    display:block;
+  }
+  .placeorderbuttonContainer{
+    width: 100%;
+  }
+  .placeorderbutton{
+    width: 100%;
+    margin-left: 0%;
+    margin-bottom: 0%;
+  }
+  .cancelButton{
+    height:40px;
   }
 }
 
@@ -99,6 +197,14 @@
   z-index: 50;
   background-color: rgba(100,100,100,0.7);
   display:none;
+}
+@media only screen and (max-width: 800px) {
+  .detailsScreen{
+    height: 190%;
+  }
+  .detailsPopUpText{
+    font-size: 1rem;
+  }
 }
 
 .detailsPopUp{

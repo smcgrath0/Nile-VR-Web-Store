@@ -75,7 +75,7 @@ class DetailsCarousel extends Component {
         next={this.next}
         previous={this.previous}
       >
-        <CarouselIndicators items={this.items} activeIndex={activeIndex} onClickHandler={this.goToIndex} />
+        <CarouselIndicators items={this.items} activeIndex={activeIndex} onClickHandler={this.goToIndex} className="carouselImages"/>
         {slides}
         <CarouselControl className="carouseldirection" direction="prev" directionText="Previous" onClickHandler={this.previous} />
         <CarouselControl className="carouseldirection" direction="next" directionText="Next" onClickHandler={this.next} />

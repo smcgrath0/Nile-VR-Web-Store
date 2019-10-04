@@ -17,11 +17,17 @@ export default class CartSummaryItem extends React.Component {
   render() {
     return (
       <div className="bg-light mt-3 text-dark d-flex rounded" style={{ height: '25%', width: '100%' }}>
-        <img src={this.checkImage()} className="rounded my-auto" style={{ height: '150px', width: '150px' }}></img>
+        <div className="cartImageContainer">
+          <div className="rounded cartImage" style={{ backgroundImage: 'url(' + this.checkImage() + ')' }}>
+
+          </div>
+        </div>
+
+        {/* <img src={this.checkImage()} className="rounded my-auto" style={{ height: '150px', width: '150px' }}></img> */}
         <div>
-          <h2>{this.props.item.name}</h2>
+          <h2 className="cartName">{this.props.item.name}</h2>
           <div className="d-flex">
-            <div className="text-secondary">${(this.props.item.price / 100).toFixed(2)} x {this.props.item.count}</div>
+            <div className="text-secondary cartPrice">${(this.props.item.price / 100).toFixed(2)} x {this.props.item.count}</div>
             <div><i className="ml-2 fas fa-plus-square addAndDeleteItem" onClick={() => {
               this.context.addToCart(this.props.item.id);
             }}></i></div>
@@ -30,9 +36,8 @@ export default class CartSummaryItem extends React.Component {
             }}></i></div>
           </div>
 
-          <div>{this.props.item.shortdes}</div>
+          <div className="cartDes">{this.props.item.shortdes}</div>
         </div>
-        <div className="text-secondary ml-1" style={{ alignSelf: 'flex-end' }}>id # {this.props.item.id}</div>
       </div>
     );
   }
