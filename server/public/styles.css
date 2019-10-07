@@ -7,10 +7,6 @@
   transform: scale(1)
 }
 
-/* .placeorderbutton{
-  background-color: black;
-} */
-
 .detailsCarousel{
   width: 300px;
   margin-right: 5%;
@@ -124,6 +120,7 @@
   color:whitesmoke;
   margin-top: 5%
 }
+
 .startScreen{
   height: 1210%;
   width: 120%;
@@ -178,6 +175,12 @@
   }
   .cancelButton{
     height:40px;
+  }
+  .startPopUpText{
+    font-size: 1.5rem;
+  }
+  .startScreen{
+    height: 1690%;
   }
 }
 
