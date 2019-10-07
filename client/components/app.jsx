@@ -7,6 +7,7 @@ import ProductDetails from './product-details';
 import CartSummary from './cartsummary.jsx';
 import CheckoutForm from './checkoutform.jsx';
 import PostCheckout from './postcheckout';
+import StartModal from './startmodal';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -20,12 +21,14 @@ export default class App extends React.Component {
       cartID: 0,
       type: ''
     };
+    this.alreadyUsed = 0;
     this.setView = this.setView.bind(this);
     this.addToCart = this.addToCart.bind(this);
     this.deleteFromCart = this.deleteFromCart.bind(this);
     this.placeOrder = this.placeOrder.bind(this);
     this.calculateTotal = this.calculateTotal.bind(this);
     this.calculateItemCount = this.calculateItemCount.bind(this);
+    this.startModal = this.startModal.bind(this);
   }
   setView(name, params) {
     var currentView = {};
@@ -150,14 +153,29 @@ export default class App extends React.Component {
     }
     return totalitems;
   }
+  startModal() {
+    this.alreadyUsed++;
+  }
   render() {
     const appContext = {
       addToCart: this.addToCart,
       deleteFromCart: this.deleteFromCart
-
     };
 
     if (this.state.view.name === 'catalog') {
+      if (!this.alreadyUsed) {
+        return (
+          <div style={{ backgroundColor: '#CCCCCC' }}>
+            <StartModal startModal={this.startModal}/>
+            <Header cart={this.state.cart} setView={this.setView} totalitems={this.calculateItemCount()} />
+            <img style={{ width: '100%', marginBottom: '10px' }} src={'../img/landingpagebg1.png'}></img>
+            <div style={{ width: '90vw', paddingLeft: '10vw' }}>
+              <ProductList view={{ params: { type: 'catalog' } }} type={this.state.view.name} setView={this.setView} />
+            </div>
+            <Footer />
+          </div>
+        );
+      }
       return (
         <div style={{ backgroundColor: '#CCCCCC' }}>
           <Header cart={this.state.cart} setView={this.setView} totalitems={this.calculateItemCount()}/>

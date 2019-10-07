@@ -120,6 +120,23 @@
   align-items: center;
 }
 
+.startPopUpText{
+  color:whitesmoke;
+  margin-top: 5%
+}
+.startScreen{
+  height: 1210%;
+  width: 120%;
+  color:brown;
+  position: absolute;
+  top:-10%;
+  left: -20%;
+  padding: 10px 0px 0px 10px;
+  z-index: 50;
+  background-color: rgba(100,100,100,0.7);
+  display:none;
+}
+
 .carouselImages > li{
   background-color: black;
   border-radius: 46%;
@@ -216,6 +233,21 @@
   width: 33.33%;
   text-align:center;
   border-radius: 5px;
+}
+
+#xStartButton{
+  color: red;
+  float: right;
+  border: 0;
+  background-color: rgba(100,100,100,0);
+  margin: 2%;
+  transition-duration: .5s;
+  transform: scale(1);
+}
+
+#xStartButton:hover{
+  transition-duration: .5s;
+  transform: scale(1.1);
 }
 
 #xButton{
