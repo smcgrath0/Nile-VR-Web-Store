@@ -27,8 +27,8 @@ export default class CheckoutForm extends React.Component {
       this.setState({
         name: event.target.value
       });
-    } else if (event.target.placeholder === 'credit card number') {
-      if (event.target.value.length === 16) {
+    } else if (event.target.placeholder === 'credit card number (no dashes)') {
+      if (event.target.value.length === 16 && !isNaN(event.target.value)) {
         this.creditCardCheck = true;
       } else {
         this.creditCardCheck = false;
@@ -37,7 +37,7 @@ export default class CheckoutForm extends React.Component {
         creditCard: event.target.value
       });
     } else if (event.target.placeholder === 'address') {
-      if (event.target.value.length >= 5) {
+      if (event.target.value.length >= 10) {
         this.addressCheck = true;
       } else {
         this.addressCheck = false;
@@ -106,7 +106,7 @@ export default class CheckoutForm extends React.Component {
             </label>
             <label>
               Credit Card:
-              <input className="form-control checkoutpagesize" style={{ color: creditCard }} type="tel" creditcard="creditcard" value={this.state.creditCard} required autoFocus placeholder="credit card number" onChange={this.handleChange}/>
+              <input className="form-control checkoutpagesize" style={{ color: creditCard }} type="tel" creditcard="creditcard" value={this.state.creditCard} required autoFocus placeholder="credit card number (no dashes)" onChange={this.handleChange}/>
             </label>
             <label>
               Shipping Address:
