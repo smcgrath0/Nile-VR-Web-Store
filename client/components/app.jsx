@@ -253,7 +253,7 @@ export default class App extends React.Component {
       );
     } else if (this.state.view.name === 'postcheckout') {
       return (
-        <div>
+        <div style={{ backgroundColor: '#CCCCCC' }}>
           <Header cart={this.state.cart} setView={this.setView} totalitems={this.calculateItemCount()} />
           <div style={{ height: '80vh' }}>
             <PostCheckout view={this.state.view} setView={this.setView} />

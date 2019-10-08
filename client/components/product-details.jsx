@@ -29,7 +29,7 @@ export default class ProductDetails extends React.Component {
           </div>
 
           <div className="productInfo">
-            <div>{this.state.product[0].name}</div>
+            <div className="detailsName">{this.state.product[0].name}</div>
             <div className="detailsPrice">${(this.state.product[0].price / 100).toFixed(2)}</div>
             <div><strong>Short Description: </strong>
               <p>{this.state.product[0].shortDes}</p>
@@ -52,7 +52,7 @@ export default class ProductDetails extends React.Component {
             <div className="detailsButtonContainer">
               <button className="continueShopButton csB" onClick={() => {
                 this.props.setView('catalog', { type: 'catalog' });
-              }}>Continue Shopping</button>
+              }}><i className="fas fa-arrow-left"> </i> Continue Shopping</button>
               <button className="continueShopButton gtcB" onClick={() => {
                 this.props.setView('checkoutform', {});
               }}>Checkout</button>
