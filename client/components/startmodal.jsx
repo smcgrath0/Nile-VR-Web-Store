@@ -10,12 +10,12 @@ export default class StartModal extends React.Component {
   render() {
     return (
       <div className="startScreen" style={{ display: this.state.modal }}>
-        <div className="detailsPopUp">
+        <div className="startPopUp">
+          <h2 className="startPopUpText">This is a demo site.<br></br> There are no real products available for sale.</h2>
           <button id="xStartButton" onClick={() => {
             this.props.startModal();
             this.setState({ modal: 'none' });
-          }}><i className="fa fa-window-close" aria-hidden="true"></i></button>
-          <h2 className="startPopUpText">This is a demo site.<br></br> There are no real products available for sale.</h2>
+          }}>I AGREE</button>
         </div>
       </div>
     );

@@ -35,7 +35,7 @@ export default class ProductDetails extends React.Component {
               <p>{this.state.product[0].shortDes}</p>
             </div>
             <div className="addToCartButtonContainer">
-              <button className="btn btn-lg bg-dark text-light pr-5 pl-5 addToCartButton" onClick={() => {
+              <button className="btn btn-lg text-light pr-5 pl-5 addToCartButton" onClick={() => {
 
                 this.props.addtocart(this.props.view.params.id);
                 this.setState({ modal: 'flex' });
@@ -45,10 +45,18 @@ export default class ProductDetails extends React.Component {
         </div>
 
         <div><strong>Long Description: </strong>{this.state.product[0].longDes}</div>
-        <div className="detailsScreen" style={{ display: this.state.modal }}>
+        <div className="detailsScreen" onClick={() => { this.setState({ modal: 'none' }); }} style={{ display: this.state.modal }}>
           <div className="detailsPopUp">
             <button id="xButton" onClick={() => { this.setState({ modal: 'none' }); }}><i className="fa fa-window-close" aria-hidden="true"></i></button>
             <h2 className="detailsPopUpText">You added {this.state.product[0].name} to your cart</h2>
+            <div className="detailsButtonContainer">
+              <button className="continueShopButton csB" onClick={() => {
+                this.props.setView('catalog', { type: 'catalog' });
+              }}>Continue Shopping</button>
+              <button className="continueShopButton gtcB" onClick={() => {
+                this.props.setView('checkoutform', {});
+              }}>Checkout</button>
+            </div>
           </div>
         </div>
       </div>

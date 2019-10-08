@@ -93,10 +93,10 @@ export default class CheckoutForm extends React.Component {
       <div className="container checkoutpagesize mt-3">
 
         <h1 className="mx-auto checkoutpagesize">Checkout</h1>
-        <div className="d-flex justify-content-between">
+        <div className="d-flex justify-content-between checkoutpagesize">
           <h3 className="mx-auto" style={{ width: '430px' }}>Order Total: ${this.props.total}</h3>
 
-          <button onClick={this.cancelOrder} className="btn bg-danger cancelButton">Cancel</button>
+          <button onClick={this.cancelOrder} className="btn bg-danger cancelButton">Clear</button>
         </div>
         <div className="mx-auto checkoutpagesize">
           <form className="form-group" onSubmit={this.handleSubmit}>
@@ -115,20 +115,20 @@ export default class CheckoutForm extends React.Component {
           </form>
         </div>
         <div className="checkoutButtons justify-content-between checkoutpagesize">
-          <button className="btn bg-primary mb-2" onClick={ () => {
+          <button className="btn continueShopButton mb-2" onClick={ () => {
             this.props.setView('catalog', { });
-          }}>Continue Shopping</button>
+          }}><i className="fas fa-arrow-left"> </i> Continue Shopping</button>
           <div>
             <p style={{ color: 'red', fontSize: '1rem', textAlign: 'center', marginLeft: '5%', width: '140px' }}>{this.state.errorMessage}</p>
           </div>
           <div className="placeorderbuttonContainer">
-            <button className="btn placeorderbutton text-white bg-dark" onClick={event => {
+            <button className="btn placeorderbutton" onClick={event => {
               this.handleSubmit(event);
               if (this.addressCheck && this.creditCardCheck && this.nameCheck) {
                 this.context.deleteFromCart();
                 this.props.placeorder({ name: this.state.name, creditcard: this.state.creditCard, address: this.state.address });
               }
-            }}>Place Order</button>
+            }}>Order</button>
           </div>
 
         </div>

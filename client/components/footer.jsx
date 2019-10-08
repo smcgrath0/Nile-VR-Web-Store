@@ -3,7 +3,7 @@ import React from 'react';
 export default class Footer extends React.Component {
   render() {
     return (
-      <div className="justify-content-between mt-5" style={{ backgroundColor: '#e66000', height: '100px' }}>
+      <div className="justify-content-between mt-5" style={{ backgroundColor: '#1A5D81', height: '100px' }}>
         {/* <div className="col-4 row titleani" style={{ alignItems: 'center' }} onClick={() => {
           this.props.setView('catalog', {});
         }}>
