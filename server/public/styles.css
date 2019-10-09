@@ -298,15 +298,6 @@
   background-color: rgba(100,100,100,0.7);
   display:none;
 }
-@media only screen and (max-width: 800px) {
-  .detailsScreen{
-    height: 190%;
-  }
-  .detailsPopUpText{
-    font-size: 1rem;
-  }
-}
-
 .detailsButtonContainer{
   display: flex;
   justify-content: space-between;
@@ -331,6 +322,32 @@
   border-radius: 5%;
   margin-left: 5%;
 }
+@media only screen and (max-width: 950px) {
+  .detailsScreen{
+    height: 190%;
+  }
+  .detailsPopUpText{
+    font-size: 1rem;
+  }
+  .gtcB{
+    font-size: 0.75rem;
+  }
+  .csB{
+    font-size: .75rem;
+  }
+}
+@media only screen and (max-width: 750px) {
+  .gtcB{
+    font-size: 0.5rem;
+  }
+  .csB{
+    font-size: .5rem;
+  }
+}
+
+
+
+
 .detailsPopUp{
   padding:2%;
   background: #01274F;

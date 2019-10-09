@@ -29,13 +29,16 @@ export default class CheckoutForm extends React.Component {
       });
     } else if (event.target.placeholder === 'credit card number (no dashes)') {
       if (event.target.value.length === 16 && !isNaN(event.target.value)) {
+        this.setState({
+          creditCard: event.target.value
+        });
         this.creditCardCheck = true;
-      } else {
+      } else if (event.target.value.length < 16 && !isNaN(event.target.value)) {
+        this.setState({
+          creditCard: event.target.value
+        });
         this.creditCardCheck = false;
       }
-      this.setState({
-        creditCard: event.target.value
-      });
     } else if (event.target.placeholder === 'address') {
       if (event.target.value.length >= 10) {
         this.addressCheck = true;
