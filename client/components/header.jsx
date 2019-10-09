@@ -8,7 +8,7 @@ export default class Header extends React.Component {
       menu: 'hidden'
     };
     this.openMenu = this.openMenu.bind(this);
-    // this.closeMenu = this.closeMenu.bind(this);
+    this.closeMenu = this.closeMenu.bind(this);
   }
   openMenu() {
     if (this.state.hamburger === '') {
@@ -22,6 +22,12 @@ export default class Header extends React.Component {
         menu: 'hidden'
       });
     }
+  }
+  closeMenu() {
+    this.setState({
+      hamburger: '',
+      menu: 'hidden'
+    });
   }
   render() {
     return (
@@ -59,9 +65,18 @@ export default class Header extends React.Component {
           </div>
         </div>
         <div className={'menu ' + this.state.menu}>
-          <div className={'systems menuItems ' + this.state.menu} onClick={this.closeMenu}> Systems</div>
-          <div className={'accessories menuItems ' + this.state.menu} onClick={this.closeMenu}>Accessories</div>
-          <div className={'games menuItems ' + this.state.menu} onClick={this.closeMenu}>Games</div>
+          <div className={'systems menuItems ' + this.state.menu} onClick={() => {
+            this.closeMenu();
+            this.props.setView('systems', { type: 'systems' });
+          }}> Systems</div>
+          <div className={'accessories menuItems ' + this.state.menu} onClick={ () => {
+            this.closeMenu();
+            this.props.setView('accessories', { type: 'accessories' });
+          }}>Accessories</div>
+          <div className={'games menuItems ' + this.state.menu} onClick={ () => {
+            this.closeMenu();
+            this.props.setView('games', { type: 'games' });
+          }}>Games</div>
         </div>
       </>
     );

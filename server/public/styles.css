@@ -272,6 +272,7 @@
   }
   .menuItems:hover{
     background-color:#3CC6B9;
+    cursor: pointer;
   }
   .menuText{
     font-size: 2.5rem;
