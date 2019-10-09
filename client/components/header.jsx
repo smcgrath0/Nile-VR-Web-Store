@@ -68,15 +68,15 @@ export default class Header extends React.Component {
           <div className={'systems menuItems ' + this.state.menu} onClick={() => {
             this.closeMenu();
             this.props.setView('systems', { type: 'systems' });
-          }}> Systems</div>
+          }}> SYSTEMS</div>
           <div className={'accessories menuItems ' + this.state.menu} onClick={ () => {
             this.closeMenu();
             this.props.setView('accessories', { type: 'accessories' });
-          }}>Accessories</div>
+          }}>ACCESSORIES</div>
           <div className={'games menuItems ' + this.state.menu} onClick={ () => {
             this.closeMenu();
             this.props.setView('games', { type: 'games' });
-          }}>Games</div>
+          }}>GAMES</div>
         </div>
       </>
     );

@@ -265,7 +265,8 @@
     text-align: center;
     height:100%;
     width: 100%;
-    background-color: #3C95C6
+    background-color: #3C95C6;
+    font-family: Impact, sans-serif;
   }
   .open{
     color:white;
