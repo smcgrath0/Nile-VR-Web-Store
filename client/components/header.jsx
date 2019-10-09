@@ -57,7 +57,7 @@ export default class Header extends React.Component {
               this.props.setView('games', { type: 'games' });
             }}>Games</h3>
           </div>
-          <div className="col-1 mr-4 d-flex justify-content-center align-contents-center position-static cartani" onClick={() => {
+          <div className="col-1 d-flex justify-content-center align-contents-center position-static cartani" onClick={() => {
             this.props.setView('cart', {});
           }}>
             <div className="fa fa-5x fa-shopping-cart mt-2" style={{ height: '100px' }}></div>
