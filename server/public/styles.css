@@ -219,13 +219,37 @@
   border-radius: 46%;
 }
 
+.hamburgerMenuContainer{
+  margin-left:10%;
+  transform: scale(2);
+  display:none;
+}
+.subjectContainer{
+  display: flex;
+  justify-content:space-between;
+}
+.hamburgerMenuButton{
+}
 @media only screen and (max-width: 600px) {
+  .hamburgerMenuButton{
+  }
+  .subjectContainer{
+    display:none;
+  }
+  .hamburgerMenuContainer{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    height:100%;
+  }
   .titleani {
-    font-size: 1rem;
-    margin-bottom: -40px;
+    transition-duration: 0s;
+    font-size: 0rem;
+    display:none;
   }
   .homeIcon {
     width:50px;
+    margin-left:auto;
   }
   .cartani{
     margin-right: 2%;
