@@ -90,7 +90,7 @@
   transform: scale(1.05);
 }
 .checkoutButton:hover{
-  color:#3C95C6;
+  color:#9C9C9C;
   transition-duration: 0.5s;
   transform: scale(1.05);
 }
@@ -127,12 +127,15 @@
 }
 .titleani{
   margin-bottom: 10%;
+  transition-duration: 1s;
+  transition-timing-function: ease;
+  color: whitesmoke;
 }
 .titleani:hover{
   transition-duration: 1s;
   transition-timing-function: ease;
   cursor: pointer;
-  color: white;
+  color: #9C9C9C;
 }
 .checkoutButtons{
   display:flex;
@@ -145,7 +148,7 @@
     transition-duration: 0.5s;
 }
 .placeorderbutton:hover{
-  color: #3C95C6;
+  color: #9C9C9C;
   transition-duration: 0.5s;
 }
 .postCheckoutContainer {
