@@ -16,12 +16,12 @@ export default class Footer extends React.Component {
           <div className="fa fa-5x fa-shopping-cart mt-2" style={{ height: '100px' }}></div>
           <div className="text-light position-absolute mt-4 ml-2" style={{ fontSize: '20px' }}>{this.props.totalitems}</div>
         </div> */}
-        <div className="about">
+        {/* <div className="about">
           <h3>About</h3>
           <h5>Who made it?</h5>
           <h5></h5>
           <h5></h5>
-        </div>
+        </div> */}
       </div>
     );
   }
