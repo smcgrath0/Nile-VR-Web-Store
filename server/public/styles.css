@@ -133,6 +133,9 @@
   color: #000067;
   cursor: pointer;
 }
+.about{
+  color: whitesmoke;
+}
 .titleani{
   margin-bottom: 10%;
   transition-duration: 1s;
@@ -252,6 +255,12 @@
 .cartani{
     margin-right: 5%;
   }
+
+@media only screen and (max-width: 800px) {
+  .startScreen{
+    height: 1620%;
+  }
+}
 @media only screen and (max-width: 600px) {
   .hamburgerMenuButton{
     transition-duration: .5s;
@@ -346,7 +355,7 @@
     font-size: 1.5rem;
   }
   .startScreen{
-    height: 1690%;
+    height: 2950%;
   }
 }
 

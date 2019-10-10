@@ -20,7 +20,7 @@
 require_once("functions.php");
 
 define('INTERNAL',true);
-
+startUp();
 set_exception_handler('error_handler');
 
 require_once('db_connection.php');
