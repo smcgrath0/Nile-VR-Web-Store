@@ -7,6 +7,14 @@
   transform: scale(1)
 }
 
+.productItemImg{
+  height: 200px;
+  width: 225px;
+  background-position:center;
+  background-size:contain;
+  background-repeat: no-repeat;
+}
+
 .detailsCarousel{
   width: 300px;
   margin-right: 5%;
