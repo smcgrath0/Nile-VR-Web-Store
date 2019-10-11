@@ -34,26 +34,6 @@
   transition-timing-function: ease;
 }
 
-@media screen and (max-width: 800px) {
-  .productInfo {
-    width: 100%;
-  }
-  .detailsCarousel{
-    margin:auto;
-  }
-  .detailsPrice{
-    font-size: 2rem;
-    font-weight: bold;
-  }
-  .addToCartButtonContainer {
-    display:flex;
-    justify-content: left;
-  }
-  .productDetails{
-    display:block;
-  }
-}
-
 .view:hover{
   transition-duration: 1s;
   color:darkblue;
@@ -72,19 +52,6 @@
   padding:1%;
 }
 
-
-/* @media only screen and (min-width: 1030px) {
-  .cartItem{
-    width:40%;
-    margin: 5%;
-    padding:1%;
-  }
-  .cartItemsContainer{
-    display:flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-  }
-} */
 .home:hover{
   transition-duration: 1s;
   transform: scale(1.1);
@@ -152,11 +119,11 @@
   display:flex;
 }
 .placeorderbutton{
-    margin-left: 5%;
-    margin-bottom: 3%;
-    background-color: #000067;
-    color: #CDFDF8;
-    transition-duration: 0.5s;
+  margin-left: 5%;
+  margin-bottom: 3%;
+  background-color: #000067;
+  color: #CDFDF8;
+  transition-duration: 0.5s;
 }
 .placeorderbutton:hover{
   color: #9C9C9C;
@@ -190,22 +157,15 @@
   margin-right: 3%;
 }
 
-.detailsName{
-  font-size: 2rem;
-}
-.detailsPrice{
-  font-size:2rem;
-  font-weight:bold;
-}
 .startPopUpText{
   color:whitesmoke;
   margin-top: 5%
 }
 
 .startScreen{
-  height: 1210%;
+  height: 120%;
   width: 120%;
-  position: absolute;
+  position: fixed;
   top:-10%;
   left: -20%;
   padding: 10px 0px 0px 10px;
@@ -225,6 +185,7 @@
   text-align:center;
   border-radius: 5px;
 }
+
 .carouselImages > li{
   background-color: black;
   border-radius: 46%;
@@ -235,12 +196,10 @@
   transform: scale(2);
   display:none;
 }
+
 .subjectContainer{
   display: flex;
   justify-content:space-between;
-}
-.hamburgerMenuButton:hover{
-
 }
 .hamburgerMenuButton{
   transition-duration: 0s;
@@ -253,15 +212,110 @@
   height:0;
 }
 .cartani{
-    margin-right: 5%;
-  }
+  margin-right: 5%;
+}
 
-@media only screen and (max-width: 800px) {
-  .startScreen{
-    height: 1620%;
+.addAndDeleteItem{
+  transition-duration: 1s;
+  transition-timing-function: ease;
+  transform: scale(1);
+}
+
+.addAndDeleteItem:hover{
+  transition-duration: 1s;
+  transition-timing-function: ease;
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
+/*details*/
+.carouseldirection:hover{
+  transition-duration: 1s;
+  transition-timing-function: ease;
+  cursor: pointer;
+  background: lightgrey;
+  opacity: 0.5;
+}
+.detailsPopUp{
+  padding:2%;
+  background: #01274F;
+  top: 30%;
+  left: 33.33%;
+  position: fixed;
+  padding-bottom: 2%;
+  width: 33.33%;
+  text-align:center;
+  border-radius: 5px;
+}
+.detailsName{
+  font-size: 2rem;
+}
+.detailsPrice{
+  font-size:2rem;
+  font-weight:bold;
+}
+/*details modal*/
+.detailsScreen{
+  height: 120%;
+  width: 120%;
+  color:brown;
+  position: fixed;
+  top:-10%;
+  left: -20%;
+  padding: 10px 0px 0px 10px;
+  z-index: 50;
+  background-color: rgba(100,100,100,0.7);
+  display:none;
+}
+.detailsButtonContainer{
+  display: flex;
+  justify-content: space-between;
+}
+.detailsPopUpText{
+  color:whitesmoke;
+  margin-top: 10%;
+}
+.gtcB{
+  margin-top:5%;
+  background: #000067;
+  color:whitesmoke;
+  text-align: center;
+  border:0;
+  border-radius: 5%;
+  margin-right:5%;
+}
+.gtcB:hover{
+  background: #000000;
+  color:whitesmoke;
+  text-align: center;
+}
+.csB{
+  margin-top:5%;
+  border:0;
+  border-radius: 5%;
+  margin-left: 5%;
+}
+
+@media only screen and (max-width: 812px) and (max-height:375px) {
+  .startPopUp{
+    width: 50%;
+    left: 26%;
+  }
+  .detailsPopUp{
+    width: 50%;
+    left: 25%;
   }
 }
+
 @media only screen and (max-width: 600px) {
+  .startPopUp{
+    width:50%;
+    left:26%
+  }
+  .detailsPopUp{
+    width: 50%;
+    left: 25%;
+  }
   .hamburgerMenuButton{
     transition-duration: .5s;
     transform: scale(1);
@@ -304,10 +358,6 @@
   .link:hover{
     color:red;
   }
-  .container{
-    width: 100vw;
-  }
-
   .dark{
     background-color:gray;
     transition-duration: 1s;
@@ -354,73 +404,9 @@
   .startPopUpText{
     font-size: 1.5rem;
   }
-  .startScreen{
-    height: 2950%;
-  }
 }
 
-.carouseldirection:hover{
-  transition-duration: 1s;
-  transition-timing-function: ease;
-  cursor: pointer;
-  background: lightgrey;
-  opacity: 0.5;
-}
-
-.addAndDeleteItem{
-  transition-duration: 1s;
-  transition-timing-function: ease;
-  transform: scale(1);
-}
-
-.addAndDeleteItem:hover{
-  transition-duration: 1s;
-  transition-timing-function: ease;
-  transform: scale(1.2);
-  cursor: pointer;
-}
-
-/*details modal*/
-.detailsScreen{
-  height: 150%;
-  width: 120%;
-  color:brown;
-  position: absolute;
-  top:-10%;
-  left: -20%;
-  padding: 10px 0px 0px 10px;
-  z-index: 50;
-  background-color: rgba(100,100,100,0.7);
-  display:none;
-}
-.detailsButtonContainer{
-  display: flex;
-  justify-content: space-between;
-}
-.gtcB{
-  margin-top:5%;
-  background: #000067;
-  color:whitesmoke;
-  text-align: center;
-  border:0;
-  border-radius: 5%;
-  margin-right:5%;
-}
-.gtcB:hover{
-  background: #000000;
-  color:whitesmoke;
-  text-align: center;
-}
-.csB{
-  margin-top:5%;
-  border:0;
-  border-radius: 5%;
-  margin-left: 5%;
-}
 @media only screen and (max-width: 950px) {
-  .detailsScreen{
-    height: 250%;
-  }
   .detailsPopUpText{
     font-size: 1rem;
   }
@@ -440,27 +426,11 @@
   }
 }
 
-
-
-
-.detailsPopUp{
-  padding:2%;
-  background: #01274F;
-  top: 30%;
-  left: 33.33%;
-  position: fixed;
-  padding-bottom: 2%;
-  width: 33.33%;
-  text-align:center;
-  border-radius: 5px;
-}
-
 #xStartButton{
   color: #3C95C6;
   margin: auto;
   border: 0;
   background-color: rgba(100,100,100,0);
-  /* margin: 2%; */
   transition-duration: .5s;
   transform: scale(1);
   border-radius: 10%;
@@ -488,7 +458,23 @@
   transform: scale(1.1);
 }
 
-.detailsPopUpText{
-  color:whitesmoke;
-  margin-top: 10%;
+
+@media screen and (max-width: 800px) {
+  .productInfo {
+    width: 100%;
+  }
+  .detailsCarousel{
+    margin:auto;
+  }
+  .detailsPrice{
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  .addToCartButtonContainer {
+    display:flex;
+    justify-content: left;
+  }
+  .productDetails{
+    display:block;
+  }
 }
