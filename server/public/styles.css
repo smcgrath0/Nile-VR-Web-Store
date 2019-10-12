@@ -42,7 +42,7 @@
 }
 
 .home{
-  padding-left: 5%;
+  padding-left: 4%;
   transition-duration: 1s;
   transform: scale(1)
 }
@@ -50,6 +50,7 @@
 .cartItem{
   width:100%;
   padding:1%;
+  margin-right: 2%;
 }
 
 .home:hover{
@@ -79,8 +80,8 @@
   transition-duration: 0.5s;
 }
 .homeIcon{
-  margin-left:5%;
-  margin-top:2%;
+  /* margin-left:5%;
+  margin-top:2%; */
   width: 50px;
 }
 
@@ -209,6 +210,8 @@
   height: 75px;
   border-top-left-radius: 5%;
   border-top-right-radius: 5%;
+  transition-duration: 0.5s;
+  transition-timing-function: ease;
 }
 .hamburgerMenuButton{
   transition-duration: 0s;

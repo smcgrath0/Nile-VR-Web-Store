@@ -178,7 +178,7 @@ export default class App extends React.Component {
       return (
         <div style={{ backgroundColor: '#CCCCCC' }}>
           <Header cart={this.state.cart} view={this.state.view} setView={this.setView} totalitems={this.calculateItemCount()}/>
-          <img style={{ width: '100%', marginBottom: '10px' }} src={'../img/landingpagebg1.png'}></img>
+          <img style={{ width: '100%', marginBottom: '10px' }} src={'../img/landingpagebg2.png'}></img>
           <div style={{ width: '90vw', paddingLeft: '10vw' }}>
             <ProductList view={{ params: { type: 'catalog' } }} type={this.state.view.name} setView={this.setView} />
           </div>

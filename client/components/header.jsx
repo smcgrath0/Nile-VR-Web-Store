@@ -6,10 +6,11 @@ export default class Header extends React.Component {
     this.state = {
       hamburger: '',
       menu: 'hidden',
-      systems: '',
-      accessories: '',
-      games: ''
+      systems: 'transparent',
+      accessories: 'transparent',
+      games: 'transparent'
     };
+    this.iconWidth = '50px';
     this.openMenu = this.openMenu.bind(this);
     this.closeMenu = this.closeMenu.bind(this);
     this.checkTab = this.checkTab.bind(this);
@@ -41,29 +42,37 @@ export default class Header extends React.Component {
   }
   checkTab(props) {
     switch (props.view.params.type) {
-      case 'systems': this.setState({
-        systems: '#000067',
-        accessories: '',
-        games: ''
-      });
+      case 'systems':
+        this.iconWidth = '50px';
+        this.setState({
+          systems: '#000067',
+          accessories: 'transparent',
+          games: 'transparent'
+        });
         break;
-      case 'accessories': this.setState({
-        systems: '',
-        accessories: '#000067',
-        games: ''
-      });
+      case 'accessories':
+        this.iconWidth = '50px';
+        this.setState({
+          systems: 'transparent',
+          accessories: '#000067',
+          games: 'transparent'
+        });
         break;
-      case 'games': this.setState({
-        systems: '',
-        accessories: '',
-        games: '#000067'
-      });
+      case 'games':
+        this.iconWidth = '50px';
+        this.setState({
+          systems: 'transparent',
+          accessories: 'transparent',
+          games: '#000067'
+        });
         break;
-      default: this.setState({
-        systems: '',
-        accessories: '',
-        games: ''
-      });
+      default:
+        this.iconWidth = '50px';
+        this.setState({
+          systems: 'transparent',
+          accessories: 'transparent',
+          games: 'transparent'
+        });
     }
   }
   render() {
@@ -79,7 +88,7 @@ export default class Header extends React.Component {
             <div className="d-inline-flex home" onClick={() => {
               this.props.setView('catalog', {});
             }}>
-              <div className="homeIcon" style={{ backgroundImage: 'url(../img/logo.png)', width: '55px', height: '50px', backgroundSize: '50px 50px' }}></div>
+              <div className="homeIcon" style={{ backgroundImage: 'url(../img/logo.png)', height: '50px', width: this.iconWidth, backgroundSize: '50px 50px' }}></div>
               <h1 className="homeText" style={{ fontFamily: 'Impact, Charcoal, sans-serif' }}>ile</h1>
             </div>
           </div>
