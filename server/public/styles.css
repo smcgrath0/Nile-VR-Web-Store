@@ -202,12 +202,12 @@
   display: inline;
   width: 63%;
   text-align: center;
-  margin-top: 4%;
+  margin-top: 5%;
 }
 .subjectContainer > div {
   float: left;
   padding-bottom: 28px;
-  height: 75px;
+  height: 78px;
   border-top-left-radius: 5%;
   border-top-right-radius: 5%;
   transition-duration: 0.5s;
