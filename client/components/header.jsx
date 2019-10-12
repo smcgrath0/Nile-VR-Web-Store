@@ -5,10 +5,20 @@ export default class Header extends React.Component {
     super(props);
     this.state = {
       hamburger: '',
-      menu: 'hidden'
+      menu: 'hidden',
+      systems: '',
+      accessories: '',
+      games: ''
     };
     this.openMenu = this.openMenu.bind(this);
     this.closeMenu = this.closeMenu.bind(this);
+    this.checkTab = this.checkTab.bind(this);
+  }
+  componentDidMount() {
+    this.checkTab(this.props);
+  }
+  componentWillReceiveProps(nextProps) {
+    this.checkTab(nextProps);
   }
   openMenu() {
     if (this.state.hamburger === '') {
@@ -29,6 +39,33 @@ export default class Header extends React.Component {
       menu: 'hidden'
     });
   }
+  checkTab(props) {
+    switch (props.view.params.type) {
+      case 'systems': this.setState({
+        systems: '#000067',
+        accessories: '',
+        games: ''
+      });
+        break;
+      case 'accessories': this.setState({
+        systems: '',
+        accessories: '#000067',
+        games: ''
+      });
+        break;
+      case 'games': this.setState({
+        systems: '',
+        accessories: '',
+        games: '#000067'
+      });
+        break;
+      default: this.setState({
+        systems: '',
+        accessories: '',
+        games: ''
+      });
+    }
+  }
   render() {
     return (
       <>
@@ -46,16 +83,21 @@ export default class Header extends React.Component {
               <h1 className="homeText" style={{ fontFamily: 'Impact, Charcoal, sans-serif' }}>ile</h1>
             </div>
           </div>
-          <div className="mt-5 subjectContainer" >
-            <h3 style={{ marginRight: '10px' }} className="titleani" onClick={() => {
-              this.props.setView('systems', { type: 'systems' });
-            }}>Systems</h3>
-            <h3 style={{ marginRight: '10px' }} className="titleani" onClick={() => {
-              this.props.setView('accessories', { type: 'accessories' });
-            }}>Accessories</h3>
-            <h3 className="titleani" onClick={() => {
-              this.props.setView('games', { type: 'games' });
-            }}>Games</h3>
+          <div className="subjectContainer" >
+            <div style={{ backgroundColor: this.state.systems }}>
+              <h3 style={{ marginRight: '5px', marginLeft: '5px' }} className="titleani" onClick={() => {
+                this.props.setView('systems', { type: 'systems' });
+              }}>Systems</h3>
+            </div>
+            <div style={{ backgroundColor: this.state.accessories }}>
+              <h3 style={{ marginRight: '5px', marginLeft: '5px' }} className="titleani" onClick={() => {
+                this.props.setView('accessories', { type: 'accessories' });
+              }}>Accessories</h3></div>
+            <div style={{ backgroundColor: this.state.games }}>
+              <h3 style={{ marginRight: '5px', marginLeft: '5px' }} className="titleani" onClick={() => {
+                this.props.setView('games', { type: 'games' });
+              }}>Games</h3>
+            </div>
           </div>
           <div className="col-1 d-flex justify-content-center align-contents-center position-static cartani" onClick={() => {
             this.props.setView('cart', {});

@@ -161,13 +161,12 @@ export default class App extends React.Component {
       addToCart: this.addToCart,
       deleteFromCart: this.deleteFromCart
     };
-
     if (this.state.view.name === 'catalog') {
       if (!this.alreadyUsed) {
         return (
           <div style={{ backgroundColor: '#CCCCCC' }}>
             <StartModal startModal={this.startModal}/>
-            <Header cart={this.state.cart} setView={this.setView} totalitems={this.calculateItemCount()} />
+            <Header cart={this.state.cart} setView={this.setView} view={this.state.view} totalitems={this.calculateItemCount()} />
             <img style={{ width: '100%', marginBottom: '10px' }} src={'../img/landingpagebg2.png'}></img>
             <div style={{ width: '90vw', paddingLeft: '10vw' }}>
               <ProductList view={{ params: { type: 'catalog' } }} type={this.state.view.name} setView={this.setView} />
@@ -178,7 +177,7 @@ export default class App extends React.Component {
       }
       return (
         <div style={{ backgroundColor: '#CCCCCC' }}>
-          <Header cart={this.state.cart} setView={this.setView} totalitems={this.calculateItemCount()}/>
+          <Header cart={this.state.cart} view={this.state.view} setView={this.setView} totalitems={this.calculateItemCount()}/>
           <img style={{ width: '100%', marginBottom: '10px' }} src={'../img/landingpagebg1.png'}></img>
           <div style={{ width: '90vw', paddingLeft: '10vw' }}>
             <ProductList view={{ params: { type: 'catalog' } }} type={this.state.view.name} setView={this.setView} />
@@ -189,7 +188,7 @@ export default class App extends React.Component {
     } else if (this.state.view.name === 'details') {
       return (
         <div style={{ backgroundColor: '#CCCCCC' }}>
-          <Header cart={this.state.cart} setView={this.setView} totalitems={this.calculateItemCount()}/>
+          <Header cart={this.state.cart} view={this.state.view} setView={this.setView} totalitems={this.calculateItemCount()}/>
           <ProductDetails view={this.state.view} setView={this.setView} addtocart={this.addToCart} />
           <Footer />
         </div>
@@ -198,7 +197,7 @@ export default class App extends React.Component {
       return (
         <AppContext.Provider value={appContext} >
           <div style={{ backgroundColor: '#CCCCCC' }}>
-            <Header cart={this.state.cart} setView={this.setView} totalitems={this.calculateItemCount()}/>
+            <Header cart={this.state.cart} view={this.state.view} setView={this.setView} totalitems={this.calculateItemCount()}/>
 
             <CartSummary view={this.state.view} setView={this.setView} cart={this.state.cart} total={this.calculateTotal()} />
             <div style={{ marginTop: '100px' }}>
@@ -211,7 +210,7 @@ export default class App extends React.Component {
       return (
         <AppContext.Provider value={appContext} >
           <div style={{ backgroundColor: '#CCCCCC' }}>
-            <Header cart={this.state.cart} setView={this.setView} totalitems={this.calculateItemCount()} />
+            <Header cart={this.state.cart} view={this.state.view} setView={this.setView} totalitems={this.calculateItemCount()} />
             <CheckoutForm view={this.state.view} setView={this.setView} placeorder={this.placeOrder} cart={this.state.cart} total={this.calculateTotal()} />
             <Footer />
           </div>
@@ -220,7 +219,7 @@ export default class App extends React.Component {
     } else if (this.state.view.name === 'systems') {
       return (
         <div style={{ backgroundColor: '#CCCCCC' }}>
-          <Header cart={this.state.cart} setView={this.setView} totalitems={this.calculateItemCount()} />
+          <Header cart={this.state.cart} view={this.state.view} setView={this.setView} totalitems={this.calculateItemCount()} />
           <img style={{ width: '100%', marginBottom: '10px' }} src={'../img/systemsbg4.jpg'}></img>
           <div style={{ width: '90vw', paddingLeft: '10vw' }}>
             <ProductList view={this.state.view} type={this.state.view.name} setView={this.setView} />
@@ -231,7 +230,7 @@ export default class App extends React.Component {
     } else if (this.state.view.name === 'accessories') {
       return (
         <div style={{ backgroundColor: '#CCCCCC' }}>
-          <Header cart={this.state.cart} setView={this.setView} totalitems={this.calculateItemCount()} />
+          <Header cart={this.state.cart} view={this.state.view} setView={this.setView} totalitems={this.calculateItemCount()} />
           <img style={{ width: '100%', marginBottom: '10px' }} src={'../img/accessoriesbg4.jpg'}></img>
           <div style={{ width: '90vw', paddingLeft: '10vw' }}>
             <ProductList view={this.state.view} type={this.state.view.name} setView={this.setView} />
@@ -242,7 +241,7 @@ export default class App extends React.Component {
     } else if (this.state.view.name === 'games') {
       return (
         <div style={{ backgroundColor: '#CCCCCC' }}>
-          <Header cart={this.state.cart} setView={this.setView} totalitems={this.calculateItemCount()} />
+          <Header cart={this.state.cart} view={this.state.view} setView={this.setView} totalitems={this.calculateItemCount()} />
           <img style={{ width: '100%', marginBottom: '10px' }} src={'../img/gamesbg6.jpg'}></img>
           <div style={{ width: '90vw', paddingLeft: '10vw' }}>
             <ProductList view={this.state.view} type={this.state.view.name} setView={this.setView} />
@@ -253,7 +252,7 @@ export default class App extends React.Component {
     } else if (this.state.view.name === 'postcheckout') {
       return (
         <div style={{ backgroundColor: '#CCCCCC' }}>
-          <Header cart={this.state.cart} setView={this.setView} totalitems={this.calculateItemCount()} />
+          <Header cart={this.state.cart} view={this.state.view} setView={this.setView} totalitems={this.calculateItemCount()} />
           <div style={{ height: '80vh' }}>
             <PostCheckout view={this.state.view} setView={this.setView} />
           </div>

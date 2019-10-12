@@ -198,8 +198,17 @@
 }
 
 .subjectContainer{
-  display: flex;
-  justify-content:space-between;
+  display: inline;
+  width: 63%;
+  text-align: center;
+  margin-top: 4%;
+}
+.subjectContainer > div {
+  float: left;
+  padding-bottom: 28px;
+  height: 75px;
+  border-top-left-radius: 5%;
+  border-top-right-radius: 5%;
 }
 .hamburgerMenuButton{
   transition-duration: 0s;
