@@ -84,7 +84,7 @@ class RelatedCarousel extends Component {
         <div className="relatedContainer d-flex justify-content-between">
           {this.state.products.map(item => {
             return (
-              <div className="relatedCardContainer" key={item.id} onClick={ () => {
+              <div className="relatedCardContainer scroller" key={item.id} onClick={ () => {
                 this.context.setView('details', { id: parseInt(item.id) });
               }}>
                 <div className="relatedImgContainer">
