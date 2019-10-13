@@ -101,8 +101,22 @@
   color: #000067;
   cursor: pointer;
 }
-.about{
-  /* color: transparent; */
+.social{
+  width: 30%;
+}
+.cr{
+  font-weight:bold;
+}
+.sociallink{
+  transition-duration: 1s;
+  transition-timing-function: ease;
+  color:whitesmoke;
+}
+.sociallink:hover{
+  transition-duration: 1s;
+  transition-timing-function: ease;
+  cursor: pointer;
+  color: #9C9C9C;
 }
 .titleani{
   margin-bottom: 10%;
@@ -363,6 +377,13 @@
   color:whitesmoke;
   cursor: pointer;
 }
+
+
+.footerContent{
+  display:flex;
+  justify-content: space-around;
+}
+
 @media only screen and (max-width: 812px) and (max-height:375px) {
   .startPopUp{
     width: 50%;
@@ -378,6 +399,15 @@
   .startPopUp{
     width:50%;
     left:26%
+  }
+  .footerContent{
+    text-align:center;
+    display:block;
+  }
+  .social{
+    width:100%;
+    margin-bottom:5%;
+    margin-top:5%;
   }
   .detailsPopUp{
     width: 50%;
