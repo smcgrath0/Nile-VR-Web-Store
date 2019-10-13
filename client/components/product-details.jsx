@@ -1,31 +1,43 @@
 import React from 'react';
-import DetailsCarousel from './details_carousel';
+import DetailsCarousel from './details-carousel';
+import RelatedCarousel from './related-products-carousel';
 
 export default class ProductDetails extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       product: null,
+      images: null,
       modal: 'none'
     };
+  }
+  componentWillReceiveProps(nextProps) {
+    fetch('/api/products.php?id=' + nextProps.view.params.id)
+      .then(response => response.json())
+      .then(product => {
+        product[0].count = 1;
+        var images = product[0].images;
+        this.setState({ product, images });
+      });
   }
   componentDidMount() {
     fetch('/api/products.php?id=' + this.props.view.params.id)
       .then(response => response.json())
       .then(product => {
         product[0].count = 1;
-        this.setState({ product });
+        var images = product[0].images;
+        this.setState({ product, images });
       });
   }
   render() {
-    if (this.state.product === null) {
+    if (this.state.product === null || this.state.images === null) {
       return <div>Loading...</div>;
     }
     return (
       <div className="container mt-5 p-2 rounded" style={{ backgroundColor: '#FFFFFF' }}>
         <div className="productDetails">
           <div className="mb-2 detailsCarousel">
-            <DetailsCarousel images={this.state.product[0].images}/>
+            <DetailsCarousel images={this.state.images}/>
           </div>
 
           <div className="productInfo">
@@ -45,6 +57,9 @@ export default class ProductDetails extends React.Component {
         </div>
 
         <div><strong>Long Description: </strong>{this.state.product[0].longDes}</div>
+        <div>
+          <RelatedCarousel type={this.state.product[0].typeOfProduct}/>
+        </div>
         <div className="detailsScreen" onClick={() => { this.setState({ modal: 'none' }); }} style={{ display: this.state.modal }}>
           <div className="detailsPopUp">
             <button id="xButton" onClick={() => { this.setState({ modal: 'none' }); }}><i className="fa fa-window-close" aria-hidden="true"></i></button>

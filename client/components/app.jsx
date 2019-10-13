@@ -159,8 +159,11 @@ export default class App extends React.Component {
   render() {
     const appContext = {
       addToCart: this.addToCart,
-      deleteFromCart: this.deleteFromCart
+      deleteFromCart: this.deleteFromCart,
+      view: this.state.view,
+      setView: this.setView
     };
+
     if (this.state.view.name === 'catalog') {
       if (!this.alreadyUsed) {
         return (
@@ -187,11 +190,13 @@ export default class App extends React.Component {
       );
     } else if (this.state.view.name === 'details') {
       return (
-        <div style={{ backgroundColor: '#CCCCCC' }}>
-          <Header cart={this.state.cart} view={this.state.view} setView={this.setView} totalitems={this.calculateItemCount()}/>
-          <ProductDetails view={this.state.view} setView={this.setView} addtocart={this.addToCart} />
-          <Footer />
-        </div>
+        <AppContext.Provider value={appContext} >
+          <div style={{ backgroundColor: '#CCCCCC' }}>
+            <Header cart={this.state.cart} view={this.state.view} setView={this.setView} totalitems={this.calculateItemCount()}/>
+            <ProductDetails view={this.state.view} setView={this.setView} addtocart={this.addToCart} />
+            <Footer />
+          </div>
+        </AppContext.Provider>
       );
     } else if (this.state.view.name === 'cart') {
       return (

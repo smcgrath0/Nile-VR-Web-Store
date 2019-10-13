@@ -19,6 +19,12 @@ class DetailsCarousel extends Component {
     this.onExiting = this.onExiting.bind(this);
     this.onExited = this.onExited.bind(this);
   }
+  componentWillReceiveProps(nextProps) {
+    this.items = [];
+    for (var i = 0; i < nextProps.images.length; i++) {
+      this.items.push({ src: nextProps.images[i] });
+    }
+  }
   addToList() {
     for (var i = 0; i < this.props.images.length; i++) {
       this.items.push({ src: this.props.images[i] });

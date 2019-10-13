@@ -38,15 +38,15 @@ export default class ProductList extends React.Component {
   render() {
     return (
       <div className="d-inline-flex flex-wrap justify-content-center pb-2" style={{ backgroundImage: 'url(https://background-tiles.com/overview/white/patterns/large/1018.png)' }}>
-        {this.state.products.map((person, index) => {
+        {this.state.products.map((product, index) => {
           if (this.images.length < this.state.products.length) {
-            this.images.push(person.images[0]);
+            this.images.push(product.images[0]);
           }
           return (
             <div key={index} className="round" onClick={() => {
-              this.props.setView('details', { id: person.id });
+              this.props.setView('details', { id: product.id });
             }}>
-              <ProductListItem key={person.id} image={this.images[index]} name={person.name} price={person.price} short={person.shortDes} />
+              <ProductListItem key={product.id} image={this.images[index]} name={product.name} price={product.price} short={product.shortDes} />
             </div>
           );
         })
