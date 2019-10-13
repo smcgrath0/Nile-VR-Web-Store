@@ -1,10 +1,10 @@
 .checkoutpagesize {
   width: 500px
 }
-
 .view{
   transition-duration: 1s;
-  transform: scale(1)
+  transform: scale(1);
+  border-bottom: 20px solid black;
 }
 
 .productItemImg{
@@ -40,7 +40,17 @@
   transform: scale(1.05);
   cursor: pointer;
 }
-
+.viewMoreItemText{
+  color: white;
+  display: flex;
+  justify-content:center;
+  padding-top:5%;
+  align-items:center;
+  bottom: 0px;
+  width: 100%; 
+  margin-left: -15px; 
+  position:absolute;
+}
 .home{
   padding-left: 4%;
   transition-duration: 1s;
@@ -80,11 +90,8 @@
   transition-duration: 0.5s;
 }
 .homeIcon{
-  /* margin-left:5%;
-  margin-top:2%; */
   width: 50px;
 }
-
 .homeText {
   margin-top:5%;
 }
@@ -172,11 +179,17 @@
   margin-right: 3%;
 }
 
+.on{
+  background-color:blue;
+  position:absolute;
+}
+.off{
+  background-color:white
+}
 .startPopUpText{
   color:whitesmoke;
   margin-top: 5%
 }
-
 .startScreen{
   height: 120%;
   width: 120%;
@@ -380,7 +393,6 @@
 }
 .relatedTitle{
   width:100%;
-  /* background-color: darkgray; */
   margin-top: 5%;
 }
 .viewmore{
@@ -395,7 +407,6 @@
   color:#000067;
   cursor: pointer;
 }
-
 
 .footerContent{
   display:flex;
