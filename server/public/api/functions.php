@@ -2,7 +2,6 @@
 
 function startUp(){
   header( "Content-type:application/json");
-  header('Set-Cookie: cross-site-cookie=name; SameSite=None; Secure');
 }
 
 function error_handler($error){

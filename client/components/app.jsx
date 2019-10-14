@@ -88,7 +88,7 @@ export default class App extends React.Component {
     }
     fetch('/api/cart.php', {
       method: 'DELETE',
-      body: JSON.stringify({ 'productID': parseInt(id) })
+      body: JSON.stringify({ 'productID': parseInt(id), cartID: this.state.cartID })
     })
       .then(response => {
         return response.json();

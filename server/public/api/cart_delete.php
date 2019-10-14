@@ -22,8 +22,8 @@ $andClause = '';
 if($id !== 0) {
   $andClause = " AND p.id = {$id}";
 }
-$cartID = $_SESSION['cartId'];
 
+$cartID = $_SESSION['cartId'];
 $getCartItemsQuery = "SELECT *
 FROM cartItems AS cI
 JOIN cart AS c
