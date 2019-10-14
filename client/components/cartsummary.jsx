@@ -74,7 +74,7 @@ export default class CartSummary extends React.Component {
         </div>
         <div className="startScreen" style={{ display: this.state.modal }}>
           <div className="startPopUp">
-            <h2 className="startPopUpText">I want to delete {this.state.currentProductName} from my cart</h2>
+            <h2 className="startPopUpText">I want to delete 1 {this.state.currentProductName} from my cart</h2>
             <button id="xCartButton" onClick={() => {
               this.context.deleteFromCart(this.state.currentID);
               this.setState({ modal: 'none' });
