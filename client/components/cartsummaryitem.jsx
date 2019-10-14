@@ -24,7 +24,7 @@ export default class CartSummaryItem extends React.Component {
         </div>
         <div>
           <h2 className="cartName">{this.props.item.name}</h2>
-          <div className="d-flex justify-content-between">
+          <div className="cartFunc">
             <div className="d-flex">
               <div className="text-secondary cartPrice">${(this.props.item.price / 100).toFixed(2)} x {this.props.item.count}</div>
               <div><i className="ml-2 fas fa-plus-square addAndDeleteItem" onClick={() => {
@@ -34,7 +34,7 @@ export default class CartSummaryItem extends React.Component {
                 this.props.displayDelete(this.props.item.id, this.props.item.name, '1');
               }}></i></div>
             </div>
-            <button className="btn btn-sm bg-danger" onClick={ () => {
+            <button className="btn btn-sm bg-danger cartDeleteAllButton" onClick={ () => {
               this.props.displayDelete(this.props.item.id, this.props.item.name, 'all');
             }}>DELETE</button>
           </div>
