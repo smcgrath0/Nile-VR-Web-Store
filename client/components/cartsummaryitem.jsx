@@ -22,20 +22,22 @@ export default class CartSummaryItem extends React.Component {
 
           </div>
         </div>
-
-        {/* <img src={this.checkImage()} className="rounded my-auto" style={{ height: '150px', width: '150px' }}></img> */}
         <div>
           <h2 className="cartName">{this.props.item.name}</h2>
-          <div className="d-flex">
-            <div className="text-secondary cartPrice">${(this.props.item.price / 100).toFixed(2)} x {this.props.item.count}</div>
-            <div><i className="ml-2 fas fa-plus-square addAndDeleteItem" onClick={() => {
-              this.context.addToCart(this.props.item.id);
-            }}></i></div>
-            <div><i className="ml-2 fas fa-minus-square addAndDeleteItem" onClick={() => {
-              this.props.displayDelete(this.props.item.id, this.props.item.name);
-            }}></i></div>
+          <div className="d-flex justify-content-between">
+            <div className="d-flex">
+              <div className="text-secondary cartPrice">${(this.props.item.price / 100).toFixed(2)} x {this.props.item.count}</div>
+              <div><i className="ml-2 fas fa-plus-square addAndDeleteItem" onClick={() => {
+                this.context.addToCart(this.props.item.id);
+              }}></i></div>
+              <div><i className="ml-2 fas fa-minus-square addAndDeleteItem" onClick={() => {
+                this.props.displayDelete(this.props.item.id, this.props.item.name, '1');
+              }}></i></div>
+            </div>
+            <button className="btn btn-sm bg-danger" onClick={ () => {
+              this.props.displayDelete(this.props.item.id, this.props.item.name, 'all');
+            }}>DELETE</button>
           </div>
-
           <div className="cartDes">{this.props.item.shortdes}</div>
         </div>
 

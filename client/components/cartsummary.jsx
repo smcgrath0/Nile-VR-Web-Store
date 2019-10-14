@@ -8,7 +8,8 @@ export default class CartSummary extends React.Component {
     this.state = {
       modal: 'none',
       currentID: 0,
-      currentProductName: ''
+      currentProductName: '',
+      typeOfDelete: ''
     };
     this.testNoItems = this.testNoItems.bind(this);
     this.displayDelete = this.displayDelete.bind(this);
@@ -20,8 +21,8 @@ export default class CartSummary extends React.Component {
       );
     }
   }
-  displayDelete(id, name) {
-    this.setState({ modal: 'flex', currentID: id, currentProductName: name });
+  displayDelete(id, name, type) {
+    this.setState({ modal: 'flex', currentID: id, currentProductName: name, typeOfDelete: type });
   }
   render() {
     if (this.props.cart.length === 0) {
@@ -72,11 +73,11 @@ export default class CartSummary extends React.Component {
           </div>
 
         </div>
-        <div className="startScreen" style={{ display: this.state.modal }}>
+        <div className="startScreen" onClick={() => { this.setState({ modal: 'none' }); }} style={{ display: this.state.modal }}>
           <div className="startPopUp">
-            <h2 className="startPopUpText">I want to delete 1 {this.state.currentProductName} from my cart</h2>
+            <h2 className="startPopUpText">I want to delete {this.state.typeOfDelete} {this.state.currentProductName} from my cart</h2>
             <button id="xCartButton" onClick={() => {
-              this.context.deleteFromCart(this.state.currentID);
+              this.context.deleteFromCart(this.state.currentID, this.state.typeOfDelete);
               this.setState({ modal: 'none' });
             }}>I AGREE</button>
           </div>

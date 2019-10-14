@@ -82,13 +82,16 @@ export default class App extends React.Component {
         this.setState({ cart, cartID: newitem.cartID });
       });
   }
-  deleteFromCart(id) {
+  deleteFromCart(id, type) {
+    if (!type) {
+      type = '';
+    }
     if (!id) {
       id = 0;
     }
     fetch('/api/cart.php', {
       method: 'DELETE',
-      body: JSON.stringify({ 'productID': parseInt(id), cartID: this.state.cartID })
+      body: JSON.stringify({ 'productID': parseInt(id), cartID: this.state.cartID, type: type })
     })
       .then(response => {
         return response.json();

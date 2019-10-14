@@ -59,9 +59,12 @@ $productData = $output;
 
 $startTransQuery = mysqli_query($conn, "START TRANSACTION");
 
-if($productData['count'] <= 1) {
+if($productData['count'] <= 1 || $body->type === 'all') {
   $cartItemsQuery = "DELETE FROM cartItems WHERE productID = " . $id . " AND cartID = ". $cartID;
   $output['count'] = $output['count'] - 1;
+  if ($body->type === 'all'){
+     $output['count'] = 0;
+  }
 } else {
   $cartItemsQuery = "UPDATE cartItems SET count = count - 1 WHERE productID = " . $id . " AND cartID = " . $cartID;
   $output['count'] = $output['count'] - 1;
