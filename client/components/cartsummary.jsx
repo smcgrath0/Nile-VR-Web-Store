@@ -1,10 +1,16 @@
 import React from 'react';
 import CartSummaryItem from './cartsummaryitem.jsx';
+import AppContext from '../context.js';
 
 export default class CartSummary extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      modal: 'none',
+      currentID: 0
+    };
     this.testNoItems = this.testNoItems.bind(this);
+    this.displayDelete = this.displayDelete.bind(this);
   }
   testNoItems() {
     if (!this.props.cart[0]) {
@@ -12,6 +18,9 @@ export default class CartSummary extends React.Component {
         <div>You have no items in your cart</div>
       );
     }
+  }
+  displayDelete(id) {
+    this.setState({ modal: 'flex', currentID: id });
   }
   render() {
     if (this.props.cart.length === 0) {
@@ -24,7 +33,7 @@ export default class CartSummary extends React.Component {
               {
                 this.props.cart.map(item => {
                   return (
-                    <CartSummaryItem key={item.id} item={item} addtocart={this.props.addToCart} />
+                    <CartSummaryItem key={item.id} item={item} addtocart={this.props.addToCart} displayDelete={this.displayDelete}/>
                   );
                 })}
             </div>
@@ -46,7 +55,7 @@ export default class CartSummary extends React.Component {
             {
               this.props.cart.map(item => {
                 return (
-                  <CartSummaryItem key={item.id} item={item} addtocart={this.props.addToCart} />
+                  <CartSummaryItem key={item.id} item={item} addtocart={this.props.addToCart} displayDelete={this.displayDelete}/>
                 );
               })}
           </div>
@@ -62,7 +71,18 @@ export default class CartSummary extends React.Component {
           </div>
 
         </div>
+        <div className="startScreen" style={{ display: this.state.modal }}>
+          <div className="startPopUp">
+            <h2 className="startPopUpText">I want to delete this item from my cart</h2>
+            <button id="xCartButton" onClick={() => {
+              this.context.deleteFromCart(this.state.currentID);
+              this.setState({ modal: 'none' });
+            }}>I AGREE</button>
+          </div>
+        </div>
       </>
     );
   }
 }
+
+CartSummary.contextType = AppContext;
