@@ -7,7 +7,8 @@ export default class CartSummary extends React.Component {
     super(props);
     this.state = {
       modal: 'none',
-      currentID: 0
+      currentID: 0,
+      currentProductName: ''
     };
     this.testNoItems = this.testNoItems.bind(this);
     this.displayDelete = this.displayDelete.bind(this);
@@ -19,8 +20,8 @@ export default class CartSummary extends React.Component {
       );
     }
   }
-  displayDelete(id) {
-    this.setState({ modal: 'flex', currentID: id });
+  displayDelete(id, name) {
+    this.setState({ modal: 'flex', currentID: id, currentProductName: name });
   }
   render() {
     if (this.props.cart.length === 0) {
@@ -73,7 +74,7 @@ export default class CartSummary extends React.Component {
         </div>
         <div className="startScreen" style={{ display: this.state.modal }}>
           <div className="startPopUp">
-            <h2 className="startPopUpText">I want to delete this item from my cart</h2>
+            <h2 className="startPopUpText">I want to delete {this.state.currentProductName} from my cart</h2>
             <button id="xCartButton" onClick={() => {
               this.context.deleteFromCart(this.state.currentID);
               this.setState({ modal: 'none' });

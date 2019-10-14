@@ -32,7 +32,7 @@ export default class CartSummaryItem extends React.Component {
               this.context.addToCart(this.props.item.id);
             }}></i></div>
             <div><i className="ml-2 fas fa-minus-square addAndDeleteItem" onClick={() => {
-              this.props.displayDelete(this.props.item.id);
+              this.props.displayDelete(this.props.item.id, this.props.item.name);
             }}></i></div>
           </div>
 
