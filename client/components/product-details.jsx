@@ -31,7 +31,14 @@ export default class ProductDetails extends React.Component {
   }
   render() {
     if (this.state.product === null || this.state.images === null) {
-      return <div>Loading...</div>;
+      return (
+        <div className="loadingLines">
+          <div className="line bg-dark" ></div>
+          <div className="line bg-dark" ></div>
+          <div className="line bg-dark" ></div>
+          <div className="line bg-dark" ></div>
+        </div>
+      );
     }
     return (
       <div className="container mt-5 p-2 rounded" style={{ backgroundColor: '#FFFFFF' }}>
