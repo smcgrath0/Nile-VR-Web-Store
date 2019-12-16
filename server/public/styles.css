@@ -47,8 +47,8 @@
   padding-top:5%;
   align-items:center;
   bottom: 0px;
-  width: 100%; 
-  margin-left: -15px; 
+  width: 100%;
+  margin-left: -15px;
   position:absolute;
 }
 .home{
@@ -337,6 +337,8 @@
 
 /*Related products*/
 .relatedContainer{
+  display: flex;
+  justify-content: space-between;
   width: 100%;
   overflow-x: scroll;
   /* background-color: ; */
@@ -394,10 +396,20 @@
   color: #000067;
 }
 .relatedTitle{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 1%;
   width:100%;
   margin-top: 5%;
 }
+.viewmoreContainer{
+  display: flex;
+  align-items: center;
+}
 .viewmore{
+  width:150px;
+  text-align: center;
   transition-duration: 0.5s;
   transition-timing-function: ease;
   transform: scale(1);

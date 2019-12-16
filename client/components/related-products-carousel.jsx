@@ -78,10 +78,10 @@ class RelatedCarousel extends Component {
     }
     return (
       <>
-        <div className="relatedTitle d-flex justify-content-center align-items-center pb-1">
+        <div className="relatedTitle">
           <h3>You also might want ...</h3>
         </div>
-        <div className="relatedContainer d-flex justify-content-between">
+        <div className="relatedContainer">
           {this.state.products.map(item => {
             return (
               <div className="relatedCardContainer scroller" key={item.id} onClick={ () => {
@@ -101,8 +101,8 @@ class RelatedCarousel extends Component {
               </div>
             );
           })}
-          <div className="d-flex align-items-center">
-            <div className="viewmore text-center" style={{ width: '150px' }} onClick={ () => {
+          <div className="viewmoreContainer">
+            <div className="viewmore" onClick={ () => {
               this.context.setView('catalog', { type: 'catalog' });
             }}>
               <i className="fas fa-arrow-right"> </i>
